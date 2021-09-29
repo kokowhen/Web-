@@ -4,25 +4,13 @@
 
 > 决定网页的结构
 
-> [HTML参考手册]:"https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference"
-
-> [HTML学习链接]:"https://developer.mozilla.org/zh-CN/docs/learn/HTML"
-
 ## 一、HTML介绍
 
-> https://developer.mozilla.org/zh-CN/docs/Learn/HTML/Introduction_to_HTML
-
-一个HTML元素包含哪些部分：
-
-- 元素：单一元素、元素的嵌套，块级元素和内联元素，空元素
-- 标签：开始标签和结束标签
-- 内容
-
-### 1.1 <head>标签里有什么
+### 1.1 head元素里有什么
 
 > 学习 HTML <head> 标签的概念、用途、基本组成，以及它对 HTML 文档所起的作用
 
-#### 1.1.1 head元素的作用
+#### 1.1.1 head元素
 
 - 包含了网页的一些信息例如页面的标题
 - 页面的样式
@@ -30,40 +18,19 @@
 
 h1添加文档body元素内容的标题，title添加整个HTML文档的标题
 
-<meta>元素的用途
+![](pictures.assets\Snipaste_2021-09-28_10-20-13.png)
 
-- 规定文档字符编码
+#### 1.1.2 meta标签
 
-  - `utf-8` 是一个通用的字符集，它包含了任何人类语言中的大部分的字符。 意味着该 web 页面可以显示任意的语言；所以对于你的每一个页面都使用这个设置会是一个好主意！比如说，你的页面可以很好的处理中文和藏文
+![](pictures.assets\Snipaste_2021-09-28_10-18-19.png)
 
-  - `GBK` （中国大陆国标字符集）
+#### 1.1.2 link标签
 
-**应该为页面手动设置编码为`utf-8`，来避免在其他浏览器中可能出现的潜在问题**
+![](pictures.assets\Snipaste_2021-09-28_10-35-14.png)
 
-#### 1.1.2 添加作者和描述
+#### 1.1.3 style元素
 
-<meta name="xxx" content="xxx">
-
-- `name` 指定了meta 元素的类型； 说明该元素包含了什么类型的信息
-
-- `content` 指定了实际的元数据内容
-
-#### 1.1.3 为自己的站点添加自定义图标
-
-<link href="">
-
-#### 1.1.4 在HTML中应用CSS和JavaScript
-
-- <link>元素链接CSS样式
-
-  - 位置：经常位于文档的头部
-  - <link rel="stylesheet" href="CSS文件路径">
-
-- <script>元素链接JavaScript文件
-
-  - 位置：经常位于文档的尾部，</body>之前
-
-  - <script src="JS文件路径"></script>
+![](pictures.assets\Snipaste_2021-09-28_10-36-59.png)
 
 ### 1.2 HTML文字处理基础
 
@@ -420,35 +387,43 @@ audio的使用和video的使用很像似
 
 > 要了解如何使用object、embed、iframe在网页中嵌入部件，例如Flash电影或其他网页
 
-iframe元素的作用是让第三方的（其他地方）网页的内容直接嵌入到自己的网站页面里
+iframe元素的作用是让第三方的（其他地方）网页的内容直接嵌入到自己的网站页面里（将整个web页面嵌入到另外一个web页面的方法，注意，这里是嵌入，不是像标签a链接网页的URL）
 
+#### 2.3.1 iframe元素的属性
 
+- allowfullscreen：全屏嵌入
+- frameborder：值为1默认边框；值为0删除边框
 
+- src：路径
+- width
+- height
+- 备选文本内容
 
+嵌入的时候要注意网络安全
 
+#### 2.3.2 embed元素和object元素
 
+### 2.4 在网页中添加矢量图形（偏向指南）
 
+> 了解如何嵌入 SVG (矢量) 图形到网页中。
 
+位图：使用像素去创造图像（放大到一定倍数会出现模糊感）
 
+矢量图：使用算法去创造图像（放到很大倍数依然清晰）
 
+#### 2.4.1 将SVG添加到页面
 
+##### 2.4.1.1 快捷方式，通过img元素嵌入SVG格式的图片
 
+##### 2.4.1.2 通过SVG元素引入SVG代码
 
+##### 2.4.1.3 通过iframe嵌入SVG
 
+> 每种方法都有优缺点
 
+### 2.5 响应式图片
 
-
-
-
-
-
-
-
-
-
-
-
-
+> 学习如何使用srcset以及picture元素，来实现网页中的响应式图片的处理方法
 
 
 
