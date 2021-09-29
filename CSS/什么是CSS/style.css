@@ -1,0 +1,52 @@
+/* h1 + p{
+    font-size: 200%;
+}
+
+h2
+{
+    color: blue;
+}
+h3
+{
+    color: blueviolet;
+}
+ul
+{
+    color: chartreuse;
+}
+/* 修改元素的默认行为 */
+/* li
+{
+    list-style: none;
+} */
+/* 指定某一块样式 */
+/* li.special */
+/* {
+    color: coral;
+    font-weight: bold;
+} */
+/* 指定某几块样式 */
+
+/* span
+{
+    color: green;
+}
+/* 根据元素的位置设置样式 */
+/* li em
+{
+    color: darkblue;
+    font-size: bold;
+}  */
+/* 根据元素的状态设置样式  */
+/* a:link
+{
+    color:green;
+}
+a:link:visited
+{
+    color: red;
+} */
+a:hover
+{
+    text-decoration: none;
+}
