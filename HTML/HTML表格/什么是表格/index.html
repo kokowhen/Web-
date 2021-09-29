@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <meta charset='UTF-8'>
+    <link href="style.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <h1>Table template</h1>
+    <!-- 表格数据必须封装在table元素里 -->
+    <table>
+        <!-- td元素里是一个单元格里的数据 -->
+        <tr>
+            <td>Hi,I'm your first cell.</td>
+            <td>I'm your second cell.</td>
+            <td>I'm your third cell.</td>
+            <td>I'm your forth cell.</td>
+        </tr>
+        <!-- tr元素块里的是一行表格的数据 -->
+        <tr>
+            <td>Second row,first cell</td>
+            <td>cell2</td>
+            <td>cell3</td>
+            <td>cell4</td>
+        </tr>
+        <!-- th元素表格的标题，会加粗字体 -->
+        <tr>
+            <th>title1</th>
+            <th>title2</th>
+            <th>title3</th>
+            <th>title4</th>
+        </tr>
+    </table>
+    <br>
+    <!-- 为表格中的列提供相同的样式 -->
+    <!-- 方法一 -->
+    <table>
+        <tr>
+            <th style="background-color: darkmagenta;">姓名</th>
+            <th>年龄</th>
+            <th style="background-color:brown;">性别</th>
+        </tr>
+        <tr>
+            <td style="background-color: darkmagenta;">张三</td>
+            <td>22</td>
+            <td style="background-color: brown;">男</td>
+        </tr>
+        <tr>
+            <td style="background-color: darkmagenta;">李四</td>
+            <td>23</td>
+            <td style="background-color: brown;">男</td>
+        </tr>
+        <tr>
+            <td style="background-color: darkmagenta;">小花</td>
+            <td>18</td>
+            <td style="background-color: brown;">女</td>
+        </tr>
+    </table>
+    <!-- 方法二 -->
+    <table>
+        <colgroup>
+            <col style="width: 20px; background-color: blue;">
+            <col span="2" style="background-color: blueviolet;">
+        </colgroup>
+        <tr>
+            <th>姓名</th>
+            <th>年龄</th>
+            <th>性别</th>
+        </tr>
+        <tr>
+            <td>张三</td>
+            <td>22</td>
+            <td>男</td>
+        </tr>
+        <tr>
+            <td>李四</td>
+            <td>23</td>
+            <td>男</td>
+        </tr>
+        <tr>
+            <td>小花</td>
+            <td>18</td>
+            <td>女</td>
+        </tr>
+    </table>
+</body>
+
+</html>
