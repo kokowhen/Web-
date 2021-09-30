@@ -1,0 +1,31 @@
+/* 将一级标题设置为粉红色 */
+/* 为标题添加10像素宽的点线边距 */
+h1{
+  color: hotpink;
+  border-bottom: 10px dotted purple;  
+}
+
+/* 将二级标题设置为斜体 */
+h2{
+    font-style: italic;
+}
+
+/* 用#eeeeee为联系人列表中的超链接添加背景颜色和一个5像素宽的紫色加粗边框。使用一些内边距属性，拉开正文与外边距的距离 */
+ul{
+    border: purple 5px solid;
+}
+
+/* 使用类设置邮件地址和超链接的样式*/
+.mail
+{
+  color: green;
+}
+.URL
+{
+  color: orange;
+}
+
+/* 鼠标在超链接悬停时显示绿色 */
+a:hover{
+  color: green;
+}

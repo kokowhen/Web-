@@ -1,52 +1,45 @@
-/* h1 + p{
-    font-size: 200%;
+h1
+{
+    color: red;
 }
 
-h2
-{
-    color: blue;
-}
-h3
-{
-    color: blueviolet;
-}
-ul
-{
-    color: chartreuse;
-}
-/* 修改元素的默认行为 */
-/* li
-{
-    list-style: none;
-} */
-/* 指定某一块样式 */
-/* li.special */
-/* {
-    color: coral;
-    font-weight: bold;
-} */
-/* 指定某几块样式 */
-
-/* span
+p
 {
     color: green;
 }
-/* 根据元素的位置设置样式 */
-/* li em
+
+/* 改变元素的默认行为 */
+li
 {
-    color: darkblue;
-    font-size: bold;
-}  */
-/* 根据元素的状态设置样式  */
-/* a:link
-{
-    color:green;
+    list-style-type: none;
 }
-a:link:visited
+
+/* 使用类名 */
+.special
 {
-    color: red;
-} */
+    color: orange;
+    font-weight: bold;
+}
+
+/* 根据元素在文档中的位置确定样式 */
+li em   /* 列表内的样式发生改变，段落内的样式不变 */
+{
+    color: rebeccapurple;
+}
+
+/* 根据状态确定样式 */
+a:link
+{
+    color: black;
+}
+a:visited
+{
+    color: green;
+}
+
+/* 鼠标悬停取消超链接的下划线 */
 a:hover
 {
     text-decoration: none;
 }
+
