@@ -1,0 +1,29 @@
+:enabled{
+    outline: 1px solid green;
+}
+
+:disabled{
+    background-color: gray;
+}
+
+:checked + span{
+    /* height: 50px;
+    width: 50px; */
+    background-color: red;
+    color: green;
+}
+
+/* :required{
+    background-color: green;
+    outline: 3px solid red;
+} */
+
+:optional{
+    background-color: red;
+    outline: 3px solid green;
+}
+
+/* 设置默认元素的样式，提交按钮就是一个默认的选择器 */
+:default{
+    outline: 3px solid rebeccapurple;
+}

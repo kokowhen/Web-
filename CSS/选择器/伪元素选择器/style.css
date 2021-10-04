@@ -1,0 +1,23 @@
+::first-line{
+    color: blue;
+} 
+
+div::first-letter{
+    color: red;
+}
+
+/* 在div元素前面插入内容 */
+div::before{
+    content: "我要在div前面插入这句话";
+}
+
+/* 在p元素后面插入内容 */
+p::after{
+    content: "我要在p元素后面插入这句话";
+}
+
+/* 选中文档里的文字后样式发生改变 */
+::selection{
+    background-color: red;
+    color: black;
+}

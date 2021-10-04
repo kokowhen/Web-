@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>UI伪类选择器的练习(上)</title>
+    <link href='style.css' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+    <!-- 创建form表单 -->
+    <form method="POST">
+        <!-- 设置表单的enabled和disabled的CSS样式 -->
+        <P>邮箱<input type="email" disabled></P>
+        <p>密码<input type="password"></p>
+        <button>登录</button>
+        <hr>
+        <!-- 设置表单元素的选项被选中后的样式 -->
+        <input type="radio" name="gender" value="male"><span>男人</span><br>
+        <input type="radio" name="gender" value="femal"><span>女人</span><br>
+        <hr>
+        <input type="checkbox" name="fruit" value="sugarcane"><span>甘蔗</span><br>
+        <input type="checkbox" name="fruit" value="banana"><span>香蕉</span><br>
+        <input type="checkbox" name="fruit" value="egg"><span>鸡蛋</span><br>
+        <input type="checkbox" name="fruit" value="mango"><span>芒果</span><br>
+        <input type="checkbox" name="fruit" value="peach"><span>水蜜桃</span><br>
+        <hr>
+        <!-- 设置必选和可选的样式 -->
+        <p>用户名<input type="text" required></p>
+        <p>密码<input type="password" required></p>
+        <p>备注<input type="text"></p>
+        <button>登录</button>
+        <hr>
+        <!-- 设置默认元素的样式 -->
+        <P>邮箱<input type="email"></P>
+        <p>密码<input type="password"></p>
+        <button>登录</button>
+        <hr>
+        
+    </form>
+</body>
+
+</html>

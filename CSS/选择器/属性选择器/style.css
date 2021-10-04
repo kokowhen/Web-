@@ -1,0 +1,32 @@
+/* 根据类名去匹配样式设置 */
+/* li[class]{
+    font-size: 500%;
+}
+
+li[class="a"]{
+    background-color: yellow;
+}
+
+li[class~="a"]{
+    color: red;
+} */
+
+/* 根据类名的字符串规则去匹配 */
+/* 字符串开头字母匹配 */
+li[class^="a"]{
+    background-color: royalblue;
+}
+/* 字符串结尾字符匹配 */
+li[class$="b"]{
+    font-size: 400%;
+}
+/* 字符串任意位置字符匹配 */
+li[class*="c"]{
+    background-color: rebeccapurple;
+}
+
+/* 大小写敏感设置 */
+li[class="abc" i]{
+    background-color: rosybrown;
+    font-size: 500%;
+}

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>UI伪类选择器的练习(下)</title>
+    <link href='style.css' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+    <!-- 根据用户输入的邮箱格式是否合法有效设置CSS样式 -->
+    <form>
+        <p>
+            <span>邮箱</span>
+            <input type="email" required>
+        </p>
+        <p>
+            <span>密码</span>
+            <input type="password" required>
+        </p>
+        <P>
+            <button>登录</button>
+        </P>
+    </form>
+    <!-- 根据用户输入的数字是否在设置的范围内设置样式 -->
+    <form>
+        <p>
+            <span>请在输入框中输入数字</span>
+            <input type="number" min="20" max="100" value="0">
+        </p>
+    </form>
+    <!-- 设置输入在“只读”与“只写”与“可读可写”属性对应的样式 -->
+    <form>
+        <p>
+            <span>普通的input输入框</span>
+            <input type="text">
+        </p>
+        <p>
+            <span>只读的input输入框</span>
+            <input readonly type="text">
+        </p>
+    </form>
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+/* 伪类选择器 */
+/* 超链接在不同状态时的CSS样式设置 */
+a:link{
+    color: black;
+}
+
+a:visited{
+    color: red;
+}
+
+a:hover{
+    color: blue;
+}
+
+a:active{
+    color: yellow;
+}
+
+div:hover
+{
+    background-color: brown;
+}
+
+ul:hover{
+    background-color: hotpink;
+}
+
+/* :active{
+    background-color: black
+} */
+
+input#boy:focus{
+    background-color: blue;
+}
+
+input#girl:focus{
+    background-color: hotpink;
+}
+
+input.try:focus{
+    background-color: green;
+}

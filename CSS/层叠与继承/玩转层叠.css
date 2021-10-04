@@ -1,0 +1,10 @@
+/* 设置链接的背景和字体的颜色 */
+a{
+    background-color: blue;
+    padding: 5px;
+    color: yellow;
+}
+
+/* a{
+    all:unset
+} */

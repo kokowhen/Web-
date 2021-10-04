@@ -1,0 +1,25 @@
+
+
+input:valid{
+    border: 2px solid green;
+}
+
+input:invalid{
+   border: 2px solid red;
+}
+
+:in-range{
+    background-color: green;
+}
+
+:out-of-range{
+    background-color: red;
+}
+
+input:read-only{
+    background-color: gray;
+}
+
+input:read-write{
+    background-color: yellow;
+}

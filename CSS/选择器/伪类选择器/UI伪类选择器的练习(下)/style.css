@@ -1,0 +1,23 @@
+/* :valid{
+    outline: 2px solid green;
+}
+
+:invalid{
+    outline: 2px solid red;
+} */
+
+:in-range{
+    outline: 5px solid green;
+}
+
+:out-of-range{
+    outline: 5px solid red;
+}
+
+input:read-only{
+    outline: 5px solid red;
+}
+
+input:read-write{
+    outline: 5px solid green
+}

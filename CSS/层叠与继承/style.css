@@ -1,7 +1,7 @@
 /* 第一个选择器h1将标题的颜色设置为红色
 第二个使用类来设置标题的颜色
 第二个选择器h1将标题的颜色设置为绿色 */
-h1{
+/* h1{
     color: red;
 }
 .h1color{
@@ -9,4 +9,51 @@ h1{
 }
 h1{
     color: green;
+} */
+
+/* 继承的理解，有些在父元素设置的样式，子元素可以继承，除非在子元素里单独设置 */
+/* 有些则不能继承，例如width */
+/* body{
+    color: hotpink;
+} */
+
+/* 单独设置子元素span的样式 */
+/* span{
+    color: black;
+} */
+
+/* .main{
+    color: rebeccapurple;
+    border: 2px solid #ccc;
+    padding: 1em;
+}
+
+.special{
+    color: black;
+    font-weight: bold;
+} */
+
+/* body {
+    color: green;
+}
+          
+.my-class-1 a {
+    color: inherit;
+}
+          
+.my-class-2 a {
+    color: initial;
+}
+          
+.my-class-3 a {
+    color: unset;
+} */
+
+blockquote{
+    background-color: red;
+    border: 2px solid green;
+}
+
+.this{
+    background-color: unset;
 }

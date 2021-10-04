@@ -1,0 +1,29 @@
+hr{
+    outline: 2px solid gray;
+}
+
+:enabled{
+    outline: 2px solid green;
+}
+
+:disabled{
+    outline: 2px solid red;
+}
+
+:checked{
+    outline: 2px solid red;
+    background-color: red;
+    color: green;
+}
+
+:required{
+    background-color: purple;
+}
+
+:optional{
+    background-color: blue;
+}
+
+:default{
+    outline: 2px solid red;
+}

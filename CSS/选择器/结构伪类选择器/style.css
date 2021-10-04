@@ -1,0 +1,28 @@
+
+/* 设置根元素的样式 */
+:root{
+    background-color: gray;
+}
+
+/* 设置空元素的样式 */
+/* :empty{
+    background-color: red;
+    width: 100px;
+    height: 20px;
+} */
+
+p:first-child{
+    outline: 5px solid green;
+}
+
+span:first-child{
+    background-color: greenyellow;
+}
+
+img:last-child{
+    border: 5px solid red;
+}
+
+span:only-child{
+    outline: 5px solid hotpink;
+}

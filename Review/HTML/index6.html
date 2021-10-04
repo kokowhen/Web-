@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>bdi标签</title>
+    <link href='style.css' rel='stylesheet' type='text/css'>
+    <style>
+        .name{
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <ul>
+            <li>张三男</li>
+            <li>李四男</li>
+            <li>王五男</li>
+        </ul>
+    </div>
+    <hr>
+    <div>
+        <ul dir="rtl">
+            <li>张三男</li>
+            <li>李四男</li>
+            <li>王五男</li>
+            <li>张三<bdi class="name">男</bdi></li>
+            <li dir="rtl">李四<bdi class="name">男</bdi></li>
+            <li class="name">王五<bdi>男</bdi></li>
+        </ul>
+    </div>
+    bdi标签将其中包含的文本从父元素的文本方向设置中脱离出出来
+</body>
+
+</html>

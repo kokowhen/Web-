@@ -1,0 +1,25 @@
+/* 通用选择器设置整个文档的样式 */
+*{
+    background-color: seashell;
+    color: blue;
+    font-size: 100%;
+}
+
+/* 交集选择器 */
+li.first{
+    color: red;
+}
+p.first{
+    color: red;
+}
+
+/* 并集选择器 */
+.second1 , .second2{
+    color: darksalmon;
+}
+
+/* 子元素选择器 */
+body p{
+    color: black;
+    font-style: italic;
+}

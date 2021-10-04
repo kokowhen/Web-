@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>map和area标签</title>
+    <link href='style.css' rel='stylesheet' type='text/css'>
+    <base href="../HTML/map元素图片素材/" target="_blank">
+</head>
+
+<body>
+    <img src="map主图片.jfif" usemap="#map1">
+    <map name="map1">
+        <area shape="rect" coords="0,0,100,100" href="子图片1.jfif" alt="human1">
+        <area shape="circle" coords="100,100,100" href="子图片2.jfif" alt="human2">
+        <area shape="rect" coords="200,50,250,100" href="子图片3.jfif" alt="human3">
+    </map>
+    <p>
+        map和area标签的作用是可以将一张图片设置为可以点击的对象，其中要注意设置img的usemap值，根据图片的尺寸进行点击区域的设置
+    </p>
+</body>
+
+</html>
