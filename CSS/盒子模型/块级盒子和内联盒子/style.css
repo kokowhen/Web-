@@ -1,0 +1,22 @@
+p{
+    /* display: flex; */
+    color: blue;
+    box-sizing: border-box;
+}
+
+span{
+    display: block;
+    color: brown;
+}
+
+a{
+    display: inline-block;
+    padding: 20px;
+    background-color: brown;
+    color: hotpink;
+    text-decoration: none;
+}
+
+a:hover{
+    background-color: lawngreen;
+}

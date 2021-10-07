@@ -1,0 +1,24 @@
+.first{
+    width: 500px;
+    height: 150px;
+    background-color: #567895;
+    padding: 5px;
+    margin: 10px;
+    background-image: url(../../picture.assets/Snipaste_2021-10-01_19-53-12.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-attachment:local;
+}
+
+.second{
+    background-color: black;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    color: white;
+    font-size: 200%;
+}
+
+.third{
+    background-color: rgb(221, 217, 217);
+
+}
