@@ -665,7 +665,7 @@ console.log(1 == 1);
 console.log(1 == "1");	//输出true
 console.log(true == "1");	//输出true
 console.log(true == "hello")	//输出false
-//将字符串和布尔值都转换为数值类型
+//将字符串和布尔值都转换为数值类型，true转换为1，"hello"转换为NaN
 console.log(null == 0);	//输出false
 ```
 
@@ -709,7 +709,7 @@ console.log(null === undefined)	//返回false
 
 - 不全等运算符!==，和不相等运算符相似，但是不会转换数据类型，数据类型不同直接返回true
 
-### 25 条件运算符
+### 25 条件运算符（三目运算符）
 
 ```
 条件表达式?语句1:语句2;
@@ -758,5 +758,493 @@ var result = 1 || 2 && 3;
 ```
 var result = (1 || 2) && 3;
 var result = 1 || (2 && 3);
+```
+
+### 28 if语句
+
+- 注意if条件语句的判断区间不要重叠
+
+- JS键盘输入的函数prompt("Please input")，函数会返回输入的值，需要用变量接收
+- prompt( )函数的返回值类型是String类型的
+
+```
+var input = prompt("Please input");
+```
+
+```
+var num1 = +prompt("Please input number.");//将输入的值转换为number类型
+```
+
+### 33 条件分支表达式
+
+```
+switch(条件表达式){
+	case 1:
+		console.log("1");
+		break;
+	case 2:
+		console.log("2");
+		break;
+	case 3:
+		console.log("3");
+		break;
+	...
+	...
+	default:
+		console.log("rest situation");
+		break;
+}
+```
+
+使用if和switch都可以，互相可以实现对方的功能。
+
+### 46 对象的介绍
+
+区别与其他5种基本数据类型的引用数据类型Object
+
+基本数据类型都是单一的值，值和值之间没有联系，这种数据类型是有缺陷的
+
+对象属于一种复合数据类型，包含保存了多个基本数据类型
+
+- 对象的分类
+  - 内建对象：ES标准定义的对象
+  - 宿主对象：由JS运行环境提供的对象，目前主要指由浏览器提供的对象
+  - 自定义对象：由开发人员自己定义的对象
+
+### 47 对象的基本操作
+
+- 创建对象（new一个对象）
+
+```
+var obj = new Object();
+console.log(obj);
+```
+
+- 向对象添加属性
+
+```
+var obj = new Object();
+obj.name = "Jeffery";
+obj.gender = "male";
+obj.age = 24;
+console.log(obj);
+```
+
+- 读取对象中的属性
+
+```
+console.log(obj.name);
+console.log(obj.gender);
+console.log(obj.age);
+console.log(obj.hobby);	//不会报错，返回undefined
+```
+
+- 修改对象中的属性值
+
+```
+var obj = new Object();
+obj.name = "Jeffery";
+obj.name = "Jacky";
+```
+
+- 删除对象中的属性值
+
+```
+var obj = new Object();
+obj.name = "Jeffery";
+obj.gender = "male";
+obj.age = 24;
+delete obj.age;
+```
+
+### 48 属性名和属性值
+
+> 使用[ ]的方式添加属性和属性值，这种方式会很灵活，不会把属性写死，可以通过将属性名设置为变量名去添加
+
+```
+var obj = new Object();
+var n = "changeable";
+obj[n] = "你好";
+console.log(obj[n])
+```
+
+JS对象属性值可以是任意的数据类型，也可以是另一个对象（套娃）
+
+```
+var obj1 = new Object();
+obj1.name1 = "nobody";
+var obj2 = new Object();
+obj2.name2 = obj1;
+console.log(obj2.name1.name2);
+```
+
+- 检查对象中是否有某个属性的操作：in 运算符
+
+```
+var obj = new Object();
+obj.name = "Jeffery";
+obj.gender = "male";
+var test1 = "name" in obj;	//返回true
+var test2 = "gebder" in obj;	//返回true
+var test3 = "age" in obj;	//返回false
+```
+
+### 49 基本数据类型和引用数据类型
+
+> 基本数据类型和引用数据类型的内存存储情况
+
+- JS中的变量都是保存在栈内存中的
+
+  - 基本数据类型的**值**直接在栈内存中存储
+    - 值与值之间是独立存在的，修改一个变量的值不会影响其他变量
+
+  - 对象是保存在堆内存中的，每创建一个新的对象，就会在堆内存中开辟一个新的空间
+    - 对象的变量保存在栈区的不是值，而是对象的内存**地址**（对象的引用），如果两个变量保存的是同一个对象的引用，那么指向的内存地址也是相同的，当一个对象的变量改变时，另一个对象的变量也会受影响而改变
+
+```
+var a = 10;
+var b = a;
+a++;
+console.log(a);	//返回11
+console.log(b);	//返回10
+```
+
+```
+var obj1 = new Object();
+obj1.age1 = 24;
+var obj2 = obj1;
+obj1.age += 1;
+console.log(obj1.age1);	//返回25
+console.log(obj2.age2);	//返回25
+```
+
+```
+var obj1 = new Object();
+obj1.name = "Jeffery";
+var obj2 = obj1;
+obj2 = null;		//obj2的值改变了，不能通过改变的值的地址去访问对象了，所以不会影响obj1
+console.log(obj1);	//返回的是Jeffery
+console.log(obj2);	//返回的是null
+```
+
+
+
+- 当比较两个基本数据类型的值时，就是值和值比较
+- 当比较两个引用数据类型时，是比较对象的内存地址
+  - 如果两个对象是一模一样的，但是地址不同，也会返回false
+
+```
+var obj1 = new Object();
+var obj2 = new Object();
+obj1.age = 23;
+obj2.age = 23;
+var test = (obj1 == obj2);
+console.log(test);	//返回false
+```
+
+### 50 对象字面量
+
+> 方便的创建对象的方法
+
+- 麻烦的创建对象的方式
+
+```
+var obj = new Object();
+```
+
+- 使用对象字面量创建对象
+
+```
+var obj = {};
+obj.name = "Jeffery";
+obj.gender = "male";
+```
+
+- 使用对象字面量可以在创建对象时直接指定对象的属性
+
+```
+var obj = {		 name:"Jeffery",
+				gender:"male",
+				age:23
+			};
+console.log(obj.name);
+console.log(obj.gender);
+console.log(obj.age);
+```
+
+### 51 函数的简介
+
+函数也是一个对象，这个对象可以封装一些功能，在需要时使用这些代码
+
+- 函数声明的方式创建函数
+
+```
+function fun(){
+	var def = "This is a function.";
+	console.log(def);
+}
+fun();	//函数调用
+```
+
+- 给一个变量进行赋值，把创建的函数赋值给变量
+
+```
+var fun = function(){
+	console.log("This is function expression.");
+}
+```
+
+### 52 函数的参数
+
+- 定义一个求和的函数，在函数声明的时候指定形参，在函数调用的时候指定实参
+
+```
+function sum(a,b){
+	console.log("a + b = "+ a+b);
+}
+sum(10,20);
+```
+
+- 在调用函数时，解析器不会对传递的参数的数据类型进行检查，要注意传递的参数非法的问题
+
+- 实参的数目不够的时候会返回undefined
+
+- 实参可以是任意的数据类型
+
+### 53 函数的返回值
+
+```
+function sum(a,b,c){
+	var result = a + b + c;
+	return result;
+}
+var receiver = sum(1,2,3);
+console.log(receiver);
+```
+
+在函数中，return语句后面的语句都不会执行
+
+return可以返回任意类型的值
+
+### 54 实参可以是任何类型的值
+
+- 实参是对象
+
+```
+var obj = {
+	name:"Jeffery";
+	gender:"male";
+	age:23;
+	hobby:Music;
+};
+function fun(o){
+	console.log(o.name);
+	console.log(o.gender);
+	console.log(o.age);
+	console.log(o.hobby);
+}
+fun(obj);
+```
+
+- 实参是函数
+
+```
+function fun1(a,b){
+	return a + b;
+}
+fun1(10,20);
+
+function fun2(c){
+	return c*c;
+}
+fun2(fun1);
+```
+
+- 开发中经常用到的情况：将一个匿名函数作为实参传入函数
+
+- 实参是函数的返回值
+
+```
+function fun1(a,b){
+	return a + b;
+}
+fun1(10,20);
+
+function fun2(c){
+	return c*c;
+}
+fun2(fun1(20,30));
+```
+
+### 56 立即执行函数
+
+函数定义后立即被执行，立即执行函数往往只会执行一次
+
+```
+(function(){
+	alert("我是一个匿名函数");
+})();
+```
+
+
+
+```
+(function(){
+	console.log("a = "+ a);
+	console.log("b = "+b);
+})(123,456);
+```
+
+### 57 方法
+
+> 函数作为一个对象的属性称为该对象的方法，调用函数称为调用该对象的方法
+
+```
+var obj = new Object();
+obj.name = "Jeffery";
+obj.age1 = 12;
+obj.age2 = 15;
+obj.ageAdd = function(){
+	return obj.age1 + obj.age2;
+}
+obj.ageAdd();//调用函数
+```
+
+- 枚举对象中的属性（使用for...in语句枚举对象中的属性）
+
+```
+//使用for...in语句枚举对象中的属性
+//每次执行会将对象中的一个属性赋值给变量n
+var obj = {
+	name = "Jeffery";
+	age = 23;
+	gender: "male";
+};
+for(var n in obj){
+	console.log("属性名:"+n);
+	console.log("属性值:"+obj[n]);
+}
+```
+
+### 58 作用域
+
+作用域值一个变量作用的范围
+
+JS中的作用域分为两种：全局作用域和局部（函数）作用域
+
+#### 全局作用域
+
+> 直接编写在script标签中的JS代码，都在全局作用域
+>
+> 函数中不使用var创建者声明的变量也会成为全局变量
+>
+> 全局作用域在页面打开时创建，在页面关闭时销毁
+>
+> 在全局作用域中有一个全局对象window（代表浏览器的窗口，由浏览器创建），我们可以直接使用
+>
+> 在全局作用域中，创建的变量都会作为window对象的属性保存
+>
+> 在全局作用域中，创建的函数都会作为window对象的方法保存
+
+```
+var a = 10;	//这个变量保存在window对象里了，作为window对象的属性，10作为a属性的值
+window.a;
+```
+
+```
+funvtion fun(){
+	console.log("hello");
+}
+window.fun();
+```
+
+- 变量的声明提前
+
+```
+console,log("a = "+a);//不会报错，因为变量已经提前声明了但是不会赋值，后面的代码执行后不会报错，由于没有赋值，返回undefined
+var a = 10;
+```
+
+- 函数声明的提前
+
+```
+fun();
+function fun(){
+	function body;
+}
+```
+
+#### 函数作用域
+
+> 全局作用域里的一个部分
+>
+> 函数作用域的开始：调用函数创建函数作用域
+>
+> 函数作用域的销毁：函数调用完作用域就销毁
+>
+> 每调用一次函数就会创建新的函数作用域
+
+```
+//创建一个变量
+var a = 10;//a是在全局作用域下的全局变量，所以在函数里是可以访问到的
+function fun(){
+	console.log("a = "+a);
+}
+fun();
+```
+
+```
+funtion fun(){
+	var b = 10;//在函数创建一个变量b，它是一个局部变量，在外部是访问不到的
+}
+func();
+console.log("b = "+b);
+```
+
+- 从外边可以看里边，从外边不可以看外边 
+
+- 就近原则，谁近找谁
+
+```
+var a = "全局作用域下的变量a";
+function fun(){
+	var a = "函数作用域下的变量a";
+	console.log(a);
+}
+fun();
+console.log(a);
+```
+
+- 在函数作用域下直接找全局作用域下的变量，用window
+
+```
+var a = "全局作用域下的变量a";
+function fun(){
+	console.log(window.a);
+}
+fun();
+```
+
+- 函数作用域下不使用var关键字声明的变量会成为全局变量
+
+```
+// var a = 20;
+function fun(){
+	console.log("a = "+a);//返回undefined
+	var a = 10;
+}
+fun();
+console.log("a = "+a);	//返回20
+```
+
+
+
+```
+function fun(){
+	console.log("a = "+a);//返回undefined
+	a = 10;//相当于window.a
+}
+fun();
+console.log("a = "+a);	//返回10
 ```
 
