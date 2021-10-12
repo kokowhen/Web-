@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>数组的遍历</title>
+    <!-- <link href='style.css' rel='stylesheet' type='text/css'> -->
+    <script>
+        // 构造函数构造一个Person类
+        function Person(name, gender, age) {
+            this.name = name;
+            this.gender = gender;
+            this.age = age;
+            this.sayName = function () {
+                alert(name);
+            };
+        };
+        // 利用原型对象添加对象中共有的属性和方法
+        Person.prototype.location = "China";
+        Person.prototype.language = function () {
+            alert("speak chinese");
+        };
+        // 实例化5个Person对象
+        var person1 = new Person("A", "male", 25);
+        var person2 = new Person("B", "female", 12);
+        var person3 = new Person("C", "female", 15);
+        var person4 = new Person("D", "male", 105);
+        var person5 = new Person("E", "male", 45);
+        // 将5个人存放到数组中
+        var perarr = [person1, person2, person3, person4, person5];
+        // 使用函数将数组内的人按照年龄从大到小的顺序排列并输出
+
+        // 创建一个排序函数
+        function sort(arr) {
+            var len = arr.length;
+            for (var i = 0; i < len; i++) {
+                for (var j = 0; j < len - i - 1; j++) {
+                    if (arr[j].age > arr[j + 1].age) {
+                        var tem = arr[j + 1];
+                        arr[j + 1] = arr[j];
+                        arr[j] = tem;
+                    }
+                }
+            }
+            return arr;
+        }
+        var result = sort(perarr);
+        console.log(result);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

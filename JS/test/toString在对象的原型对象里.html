@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>toString在对象的原型对象里</title>
+    <!-- <link href='style.css' rel='stylesheet' type='text/css'> -->
+    <script>
+        // 构造函数创建一个Person类
+        function Person(name,gender,age){
+            this.name = name;
+            this.age = age;
+            this.gender = gender;
+            this.sayName = function(){
+                alert(name);
+            };
+
+        };
+        // 原型对象添加共有属性和方法
+        Person.prototype.uni = "UESTC";
+        Person.prototype.working = function(){
+            alert("say hello");
+        };
+        // 实例化一个对象
+        var person1 = new Person("Jeffery",24,"male");
+        // 修改原型对象的toString函数输出效果
+        // Person.prototype.toString = function(){
+        //     return "Person[name="+this.name+""+this.age+""+this.gender+""+this.sayName+"]"
+        // }
+        console.log(person1);
+    </script>
+</head>
+
+<body>
+    
+</body>
+
+</html>

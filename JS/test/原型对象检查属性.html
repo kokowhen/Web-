@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>原型对象检查属性</title>
+    <!-- <link href='style.css' rel='stylesheet' type='text/css'> -->
+    <script>
+        function Person(name, gender) {
+            this.name = name;
+            this.gender = gender;
+        };
+        // 使用原型对象创建方法
+        Person.prototype.sayName = function(){
+            alert("hello");
+        };
+        // 创建一个Person的实例
+        var person1 = new Person("Jeffery", "male");
+        console.log(person1.hasOwnProperty("age"));
+        console.log(person1.hasOwnProperty("name"));
+        console.log(person1.hasOwnProperty("hasOwnProperty"));
+    </script>
+</head>
+
+<body>
+    
+</body>
+
+</html>

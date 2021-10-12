@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title></title>
+    <!-- <link href='style.css' rel='stylesheet' type='text/css'> -->
+    <script>
+        // 创建一个构造函数
+        function Person(name, gender, age) {
+            this.name = name;
+            this.gender = gender;
+            this.age = age;
+            this.sayName = function () {
+                alert(name);
+            }
+        }
+        function Dog(){
+
+        }
+
+        var person1 = new Person("Jeffery","male",24);
+        var person2 = new Person("Jacky","male",32);
+        var person3 = new Person("Jay","male",40);
+        var dog1 = new Dog();
+        console.log(person1);
+        console.log(person2);
+        console.log(person3);
+        console.log(dog1);
+        console.log(person3 instanceof Person);
+        console.log(dog1 instanceof Person);
+        console.log(dog1 instanceof Object);
+        console.log(person2 instanceof Object);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

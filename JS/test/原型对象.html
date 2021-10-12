@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>原型对象</title>
+    <!-- <link href='style.css' rel='stylesheet' type='text/css'> -->
+    <script>
+        function Person(name, gender, age) {
+            this.name = name;
+            this.gender = gender;
+            this.age = age;
+        };
+        Person.prototype.sayName = function () {
+            alert("hello");
+        };
+        // 创建Person的实例
+        var person1 = new Person("Jeffery", "male", 24);
+        console.log(person1.__proto__);
+        person1.sayName();
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

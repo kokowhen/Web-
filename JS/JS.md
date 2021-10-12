@@ -809,7 +809,7 @@ switch(条件表达式){
 - 对象的分类
   - 内建对象：ES标准定义的对象
   - 宿主对象：由JS运行环境提供的对象，目前主要指由浏览器提供的对象
-  - 自定义对象：由开发人员自己定义的对象
+  - 自定义对象：由开发人员自己定义的对象41-69都是在介绍自定义对象，开发者还是前两者用的较多
 
 ### 47 对象的基本操作
 
@@ -1246,5 +1246,352 @@ function fun(){
 }
 fun();
 console.log("a = "+a);	//返回10
+```
+
+### 59 debug
+
+> 查看代码运行的情况，和C++里设置断点一样
+
+```
+var a = 10;
+var b = "hello";
+c = true;
+function fun(){
+	alert("hello");
+}
+var d = 35;
+```
+
+### 60 this
+
+> 解析器（浏览器）在调用函数时每次都会向函数内部传递进一个隐含的参数
+>
+> 这个隐含的参数就是this
+>
+> this指向的是一个对象，是函数执行的一个上下文对象
+>
+> 根据函数**调用方式**的不同会指向不同的对象
+>
+> - 以函数的形式调用fun()时都是window
+> - 以方法的形式调用obj.fun()时是object
+
+```
+function fun(){
+	console.log(this);	// 这个this是浏览器传进来的，所以实参没参数也不会报错
+}
+fun();	// 函数调用的方式this的类型是window
+```
+
+
+
+```
+function fun(){
+	console.log(this);
+}
+fun();
+var obj = {
+	name:"Jeffery";
+	sayName:fun;
+}
+console.log(obj.sayName == fun);	// 返回true
+obj.sayName();	// 方法调用的形式返回的不是window而是object，这里this就是obj，调用哪一个方法就是哪一个obj
+```
+
+
+
+```javascript
+// 创建一个全局变量
+var name = "Jeffery";
+// 创建一个函数
+function fun(){
+	console.log(this.name);
+}
+// 创建两个对象
+var obj1 = {
+	name:"Jacky",
+	sayName:fun,
+};
+var obj2 = {
+	name:"Jay",
+	sayName:fun
+}
+fun();			// 返回Jeffery
+obj1.sayName();	// 返回Jacky
+obj2.sayName();	// 返回Jay
+```
+
+### 63 使用工厂方法创建对象
+
+```javascript
+var obj1 = {
+	name:"Jeffery";
+	gender:"male";
+	age:23;
+	sayName:function(){
+		alert(this.name);
+	}
+};
+obj1.sayName();	// 执行语句alert(this.name)this.name就是"Jeffery"
+
+var obj2 = {
+	name:"Jacky";
+	gender:"male";
+	age:32;
+	sayName:function(){
+		alert(this.name);
+	}
+};
+obj2.sayName();	// 执行语句alert(this.name)this.name就是"Jacky"
+
+var obj3 = {
+	name:"Jay";
+	gender:"male";
+	age:40;
+	sayName:function(){
+		alert(this.name);
+	}
+};
+obj3.sayName();	// 执行语句alert(this.name)this.name就是"Jay"
+```
+
+这种创建对象的方式不方便，这些大量出现的重复性的代码可以提取出来进行封装
+
+- 使用工厂模式创建对象
+
+```javascript
+var obj = {
+	name:"Jeffery",
+	gender:"male",
+	age:23,
+	sayName:function(){
+		alert(this.name);
+	}
+}
+// 使用工厂模式创建对象
+function createPerson(name,gender,age){
+	// 创建一个新的对象
+	var obj = new Object();
+	// 向对象中添加属性
+	obj.name = name;
+	obj.gender = gender;
+	obj.age = age;
+	obj.sayName = function(){
+		alert(this.name);
+	};
+	// 将新的对象返回
+	return obj;
+}
+
+var obj2 = createPerson("Jacky","male",32);
+var obj3 = createPerson("Jay","male",40);
+```
+
+### 64 构造函数
+
+> 之前工厂模式创建的对象有个缺陷，就是新对象都是通过new一个Object去创建的，这样对象之间就不能区分，不方便，而构造函数创建的对象则是一类对象，而不是同一个Object对象
+>
+> 创建一个构造函数，专门用来创建Person对象
+>
+> - 构造函数就是一个普通的函数，创建方式和普通函数没有区别
+> - 构造函数的函数名习惯首字母大写
+> - 普通函数是直接调用，构造函数需要使用关键字new来调用
+
+```javascript
+function Person(name,gender,age){
+	this.name = name;
+	this.gender = gender;
+	this.age = age;
+	this.sayName = function(){
+		alert(name);
+	};
+}
+var person1 = new Person("Jeffery","male",24);
+var person2 = new Person("Jacky","male",32);
+console.log(person1);
+console.log(person2);
+```
+
+- 构造函数的执行流程
+
+  - 立即创建一个新的对象
+
+  - 将新建的对象设置为函数中this
+  - 逐行执行函数中的代码
+  - 将新建的对象作为返回值返回
+
+### 66 原型对象
+
+尽量不要将函数（普通函数）定义在全局作用域中，如果函数名重叠就会造成函数覆盖的问题
+
+引入原型prototype
+
+每创建一个函数解析器就会向函数中添加一个属性prototype
+
+```javascript
+function Person(){
+	
+}
+function Dog(){
+	
+}
+console.log(Person.prototype);
+console.log(Dog.prototype);
+console.log(Person.prototype == Dog.prototype);	// 返回false
+```
+
+当函数以构造函数的形式调用时，它所创建的对象都会具有一个隐含的属性
+
+指向该构造函数的原型对象，我们可以通过
+
+```
+__proto__
+```
+
+来访问该属性
+
+原型对象相当于一个公共区域，所有同一个类的实例都可以访问到该属性
+
+所以我们可以把对象中共有的内容添加到原型对象中
+
+当我们访问对象的属性或方法时，它会先在自身中寻找是否由该属性，如果有就直接返回自身中的，没有就继续去原型对象中寻找，找到就返回原型中的属性
+
+```javascript
+function Person(name,gender,age){
+	this.name = name;
+	this.gender = gender;
+	this.age = age;
+};	// 构造函数里是没有sayName属性的
+Person.prototype.sayHello = function(){
+	alert("hello");	// 往Person类的原型里添加属性
+}
+var person1 = new Person("Jeffery","male",24);
+person1.sayHello();	// person1也可以访问到sayName方法
+```
+
+>  以后我创建构造函数时，我们可以将对象共有的属性和方法添加到对象的原型中，这样不会分别为每一个对象添加属性和方法，也不会影响作用域，就可以使每个对象都具有这些对象和方法了
+
+- hasOwnProperty()函数排除原型对象，检查对象自身是否含有某个属性
+
+```javascript
+function Person(name, gender) {
+            this.name = name;
+            this.gender = gender;
+        };
+        // 创建一个Person的实例
+var person1 = new Person("Jeffery", "male");
+console.log(person1.hasOwnProperty("age"));		// 返回false
+console.log(person1.hasOwnProperty("name"));	// 返回true
+```
+
+- 当我们在使用一个对象的属性或者方法时，会在自身中先寻找
+  - 自身中如果有，则直接使用
+  - 如果自身中没有则会去原型对象中寻找，如果原型对象中有，则使用
+  - 如果原型对象中没有，则会去原型的原型中找
+
+### 68 toString
+
+为什么我们打印对象中的属性会返回[object object]呢？
+
+实际上输出的是对象的toString()方法的返回值
+
+知道这个以后我们自己设置toString函数，这样打印输出的对象就是我们自己设置的对象属性和对应的值了
+
+```javascript
+Person.prototype.tostring = function(){
+	return "Person[name="+this.name+","+this.age+","+this.gender+"]";
+}
+```
+
+### 69 垃圾回收
+
+程序运行过程中会产生垃圾
+
+垃圾积攒过多会导致程序运行效率下降
+
+所以需要有相应的垃圾回收机制来处理程序运行过程中产生的垃圾
+
+- 什么是垃圾，垃圾是怎么产生的？
+  - 当一个对象没有任何的变量或者属性对它进行引用，此时我们将永远无法操作该对象
+  - 此时这种对象就是一个垃圾，这种垃圾会占用大量的内存空间，导致程序运行变慢，所以这种垃圾必须进行清理
+
+- 在JS中拥有自动的垃圾回收机制，会自动将这些垃圾从内存中销毁
+- 我们不需要也不能进行垃圾回收的操作
+- 我们需要做的只是将不再使用的对象设置为null即可
+
+```javascript
+var obj = new Object();
+obj = null;
+```
+
+### 70 数组简介Array( )
+
+数组也是一个对象，它和普通的对象功能类似，也是用来存储一些值的，不同的是
+
+- 普通对象使用字符串作为属性名
+- 数组使用数字作为索引操作元素
+  - 索引：从0开始的整数
+
+- 数组的存储性能比普通对象好，在开发中我们经常使用数组存储一些数据
+
+```javascript
+var arr = new Arr();
+```
+
+- 获取数组的长度
+
+```javascript
+var len = arr.length;
+```
+
+- 数组最后一个元素的索引
+
+```javascript
+arr[arr.lenth] = 10;
+```
+
+### 71 数组字面量
+
+> 使用字面量创建数组
+
+```
+var arr = [];
+```
+
+- 经常这样创建数组
+
+```javascript
+var arr = [1,2,3,4,5,6];
+console.log(arr);
+console.log(arr,length);
+```
+
+- 上一课将的构造函数的方法创建数组也可以直接添加数组值
+
+```javascript
+var arr = new Arr(1,2,3,4,5);
+```
+
+- 数组中的元素可以是任意的数据类型
+
+```javascript
+var arr = [[1,3,4],[2,3,4]];	// 二维数组
+```
+
+### 72 Array对象的四种方法
+
+- push( )方法：在数组末尾添加一个或多个元素，返回新数组的长度
+- pop( )方法：删除数组的最后一个元素，并将删除的元素返回
+- unshift( )方法：在数组开头添加一个或者多个元素，并返回新的数组的长度
+  - 向开头加入元素后，后面元素的索引会改变
+
+- shift( )方法：删除数组的第一个元素，并将删除的元素返回
+
+### 73 数组的遍历
+
+```javascript
+var arr = [1,2,3,4,5];
+for(var i = 0;i < arr.length;i++){
+	console.log(arr[i]);
+}
 ```
 

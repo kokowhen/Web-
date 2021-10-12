@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>使用工厂模式批量创建对象</title>
+    <!-- <link href='style.css' rel='stylesheet' type='text/css'> -->
+    <script>
+        // 创建一个对象
+        var obj = {
+            name: "Jeffery",
+            gender: "male",
+            age: 24,
+            sayName: function () {
+                alert(this.name);
+            }
+        }
+        // 使用工厂模式批量创建对象
+        function createPerson(name, gender, age) {
+            var obj = new Object();
+            obj.name = name;
+            obj.gender = gender;
+            obj.age = age;
+            obj.sayName = function () {
+                alert(this.name);
+            };
+            // 将新的对象返回
+            return obj;
+        }
+        var obj2 = createPerson("Jacky", "male", 32);
+        var obj3 = createPerson("Jay", "male", 40);
+        console.log(obj2);
+        console.log(obj3);
+        obj.sayName();
+        obj2.sayName();
+        obj3.sayName();
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
