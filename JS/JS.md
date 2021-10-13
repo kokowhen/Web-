@@ -798,6 +798,8 @@ switch(条件表达式){
 
 使用if和switch都可以，互相可以实现对方的功能。
 
+## 对象
+
 ### 46 对象的介绍
 
 区别与其他5种基本数据类型的引用数据类型Object
@@ -971,6 +973,8 @@ console.log(obj.name);
 console.log(obj.gender);
 console.log(obj.age);
 ```
+
+## 函数
 
 ### 51 函数的简介
 
@@ -1522,6 +1526,8 @@ Person.prototype.tostring = function(){
 var obj = new Object();
 obj = null;
 ```
+
+## 数组
 
 ### 70 数组简介Array( )
 
