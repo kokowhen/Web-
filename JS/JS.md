@@ -1601,3 +1601,255 @@ for(var i = 0;i < arr.length;i++){
 }
 ```
 
+```javascript
+// 构造函数构造一个Person类
+        function Person(name, gender, age) {
+            this.name = name;
+            this.gender = gender;
+            this.age = age;
+            this.sayName = function () {
+                alert(name);
+            };
+        };
+        // 利用原型对象添加对象中共有的属性和方法
+        Person.prototype.location = "China";
+        Person.prototype.language = function () {
+            alert("speak chinese");
+        };
+        // 实例化5个Person对象
+        var person1 = new Person("A", "male", 25);
+        var person2 = new Person("B", "female", 12);
+        var person3 = new Person("C", "female", 15);
+        var person4 = new Person("D", "male", 105);
+        var person5 = new Person("E", "male", 45);
+        // 将5个人存放到数组中
+        var perarr = [person1, person2, person3, person4, person5];
+        // 使用函数将数组内的人按照年龄从大到小的顺序排列并输出
+
+        // 创建一个排序函数
+        function sort(arr) {
+            var len = arr.length;
+            for (var i = 0; i < len; i++) {
+                for (var j = 0; j < len - i - 1; j++) {
+                    if (arr[j].age > arr[j + 1].age) {
+                        var tem = arr[j + 1];
+                        arr[j + 1] = arr[j];
+                        arr[j] = tem;
+                    }
+                }
+            }
+            return arr;
+        }
+        var result = sort(perarr);	// 传入之前存进person对象实例的数组对象
+        console.log(result);
+```
+
+JS的函数是不受返回值的数据类型约束的，很方便
+
+### 75 forEach遍历数组
+
+> JS提供了一个遍历数组的方法
+
+开发中用到的情况不多，函数会传入三个参数
+
+### 76 slice和splice
+
+- slice( )可以用来提取数组中的指定元素，该方法不会影响原数组，会将提取的新数组封装到新数组中
+- 包含开始索引，不包含结束索引
+- 第二个参数（结束索引）可以不写，此时会截取开始后的所有元素
+- 索引可以是一个负值，-1是倒数第一
+
+```javascript
+arrayObject.slice(start,end);
+```
+
+- splice( )可以删除数组中的指定元素并将删除元素作为返回值返回
+- 第一个参数表示开始删除元素的索引
+- 第二个参数表示删除的数量
+- 第三个及以后参数可以传入新的参数，插入到开始位置索引之前
+
+```javascript
+arrayObject.splice(1,2,"Jacky");	// 删除数组角标为1和2的两个元素，并添加"Jacky"元素
+```
+
+```javascript
+arrayObject.splice(3,0,"Jacky");	// 添加数组元素
+```
+
+### 77 数组去重练习
+
+```javascript
+ var arr = [1, 2, 3, 2, 1, 3, 4, 2, 5, 2];
+        for (var i = 0; i < arr.length; i++) {
+            // console.log(arr[i]);
+            for (var j = i + 1; j < arr.length; j++) {
+                // console.log(arr[j]);
+
+                if(arr[i] == arr[j]){
+                    arr.splice(j,1);
+                    j--;
+                    // console.log(arr[i]);
+                }
+            }
+        }
+        console.log(arr);
+```
+
+### 78 数组的其他方法
+
+- concat( )不仅可以传数组，也可以传元素
+
+```javascript
+var arr1 = [1,2,3];
+var arr2 = [4,5,6];
+arr1.concat(arr2);	// concat()可以连接两个或多个数组，并将新数组返回，不会影响原数组
+```
+
+- join( )可以传入字符串作为连接符
+
+```javascript
+var arr = [1,2,3];
+var result = arr.join();	// join()可以将数组转换为字符串
+```
+
+- reverse( )该方法用来反转数组，该方法会改变原数组
+
+```javascript
+var arr = [1,2,3,4,5];
+arr.reverse();
+```
+
+- sort( )该方法可以对数组里的元素进行排序，默认会按照unicode编码进行排序，该方法会影响原数组
+- 对数字排序可能会得到错误的结果
+- 自己指定排序的规则，在sort中添加回调函数，指定排序规则
+  - 回调函数中需要定义两个形参
+  - 浏览器就会使用数组中的元素作为实参进行排序
+  - 浏览器会根据回调函数的返回值来决定元素的顺序
+    - 返回值大于0，元素会交换位置
+    - 返回值小于0，元素位置不变
+    - 返回值等于0，元素位置不变
+
+```javascript
+var arr = [1,2,3,5,4];
+arr.sort();
+```
+
+- 根据返回值的正负影响回调函数形参的位置顺序，设计sort方法和回调函数结合的数组排序方法
+
+```javascript
+var arr = [11,2,3,45,1];
+arr.sort(function(a,b){
+    if(a > b){
+        return 1;
+    }
+    else if(a < b){
+        return -1;
+    }
+    else{
+        return 0;
+    }
+});
+```
+
+- 优化的算法
+
+```javascript
+var arr = [11,2,3,45,1];
+arr.sort(function(a,b){
+	return a - b;	// 升序
+	return b - a;	// 降序
+});
+```
+
+### 79 函数的两个方法call( )和apply( )
+
+> 这两个方法都是函数对象的方法，需要通过函数对象调用
+>
+> 注意函数返回值和函数对象的区别
+>
+> 函数调用时一个返回值，函数对象是一个对象，可以调用方法
+
+- 当对函数调用call( )和apply( )都会调用函数并执行
+
+- 在调用call和apply时，可以将一个对象指定为第一个参数
+
+- 此时这个对象会成为函数执行时的this
+
+复习在每次函数调用时浏览器都会传入的this参数：this参数指向的对象根据函数调用的形式会有所不同：
+
+- 以函数调用的形式，指向的对象是window
+- 以方法调用的形式，指向的对象是object
+
+- 所以在使用call方法和apply方法调用函数对象方法时，this参数也是指向一个对象，而且这个this指向的对象就是调用方法里的第一个对象参数，这两个函数对象的方法就可以用第一个参数来指定this参数指定的对象
+
+```javascript
+function fun(a,b){
+	console.log(this.name);
+    console.log("a = "+a);
+    console.log("b = "+b);
+}
+obj1 = {
+	name:"obj1"
+}
+fun.call(obj1,2,3);
+fun.apply(obj1,[2,3]);
+```
+
+- call( )方法可以将实参在对象之后一次传递
+- apply( )方法需要将实参封装到一个数组中统一传递
+
+### 80 arguments
+
+在调用函数时，浏览器都会传入两个隐含的对象：
+
+- 函数的上下文对象this
+- 封装实参的对象arguments（函数实参以类数组的方法封装在arguments对象里）
+  - arguments是一个类数组对象（不是数组对象，通过Array.isArray()方法可以判断）
+  - 它可以通过索引来操作数据，也可以获取长度
+  - 在调用函数时，我们的实参都会在arguments中保存
+
+- arguments对象的有些方法和操作和数组对象相同
+  - 访问实参参数arguments[0]
+  - 实参的数量arguments.length
+
+- arguments的callee属性：返回当前正在指向的函数的对象
+
+### 81 Date对象
+
+>  在JS中使用Date对象来表示时间
+
+```javascript
+// 创建当前时间
+var d = new Date();
+// 创建自定义时间字符串：月/日年 时：分：秒
+var pd = new Date("12/8/2021 12:45:46");
+```
+
+Date对象的属性和方法
+
+- getDate( )返回当前创建的Date对象的号数
+
+- getDay( )返回当前创建的Date对象是周几，返回的是0-6的值，0表示周日
+
+- getMonth( )：0-11，0表示的是1月
+
+- getFullyear( )：获取当前创建的Date对象的年份
+
+- getTime( )
+
+  - 获取当前创建的Date对象的时间戳：毫秒
+
+  - 时间戳的概念，时间差，毫秒量级
+  - 时间戳主要用来统一时间单位，计算机底层在保存时间时使用的都是时间戳
+
+- 测试代码的性能
+
+```javascript
+var start = Date.now();
+for(var i = 0; i < 100;i++){
+	console.log(i);
+}
+var end = Date.now();
+console.log("执行了"+(end - start)+"毫秒");
+```
+

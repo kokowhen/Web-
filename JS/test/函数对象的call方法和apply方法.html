@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title></title>
+    <!-- <link href='style.css' rel='stylesheet' type='text/css'> -->
+    <script>
+        // 创建一个函数
+
+        function fun(){
+            alert("hello");
+            console.log(this.nmae);  // 这里的对象应该是空的person对象
+        }
+
+        // 创建一个空对象
+        var Person = {
+            nmae:"Person"
+        }
+
+        // 使用call方法调用函数对象
+        fun.call(Person);
+
+    </script>
+</head>
+
+<body>
+    
+</body>
+
+</html>

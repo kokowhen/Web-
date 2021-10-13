@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title></title>
+    <!-- <link href='style.css' rel='stylesheet' type='text/css'> -->
+    <script>
+        function fun(){
+            alert("hello");
+        }
+        fun();
+        console.log(this);  // 函数调用的形式this指向的对象是window
+
+        // 创建一个Person类
+        function Person(age){
+            this.age = age;
+            this.sayAge = function(){
+                alert(age);
+                console.log(this);
+            };
+        };
+        var person1 = new Person(10);
+        person1.sayAge();   // 方法调用的形式this指向的对象是object
+        // console.log(this);
+
+    </script>
+</head>
+
+<body>
+    
+</body>
+
+</html>
