@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title></title>
+    <!-- <link href='style.css' rel='stylesheet' type='text/css'> -->
+    <script>
+        var str = "cvdh5632789jbdsgtdwudhw98wfwdg7hd23d928d02";
+        var reg = /[A-z]/;
+        var result = str.split(reg);
+        console.log(result);
+
+        var phoneReg = /^1[3 -9][0-9]{9}$/;
+        var phone = 18108723580;
+        var result = phoneReg.test(phone);
+        if(result){
+            alert("输入正确！");
+        }
+        else{
+            alert("输入不正确！");
+        }
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
