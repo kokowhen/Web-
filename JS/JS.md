@@ -811,7 +811,7 @@ switch(条件表达式){
 - 对象的分类
   - 内建对象：ES标准定义的对象
   - 宿主对象：由JS运行环境提供的对象，目前主要指由浏览器提供的对象
-  - 自定义对象：由开发人员自己定义的对象41-69都是在介绍自定义对象，开发者还是前两者用的较多
+  - 自定义对象：由开发人员自己定义的对象41-69都是在介绍自定义对象，开发还是前两者用的较多
 
 ### 47 对象的基本操作
 
@@ -903,7 +903,7 @@ var test3 = "age" in obj;	//返回false
   - 对象是保存在堆内存中的，每创建一个新的对象，就会在堆内存中开辟一个新的空间
     - 对象的变量保存在栈区的不是值，而是对象的内存**地址**（对象的引用），如果两个变量保存的是同一个对象的引用，那么指向的内存地址也是相同的，当一个对象的变量改变时，另一个对象的变量也会受影响而改变
 
-```
+```javascript
 var a = 10;
 var b = a;
 a++;
@@ -911,7 +911,7 @@ console.log(a);	//返回11
 console.log(b);	//返回10
 ```
 
-```
+```javascript
 var obj1 = new Object();
 obj1.age1 = 24;
 var obj2 = obj1;
@@ -920,7 +920,7 @@ console.log(obj1.age1);	//返回25
 console.log(obj2.age2);	//返回25
 ```
 
-```
+```javascript
 var obj1 = new Object();
 obj1.name = "Jeffery";
 var obj2 = obj1;
@@ -935,7 +935,7 @@ console.log(obj2);	//返回的是null
 - 当比较两个引用数据类型时，是比较对象的内存地址
   - 如果两个对象是一模一样的，但是地址不同，也会返回false
 
-```
+```javascript
 var obj1 = new Object();
 var obj2 = new Object();
 obj1.age = 23;
@@ -982,7 +982,7 @@ console.log(obj.age);
 
 - 函数声明的方式创建函数
 
-```
+```javascript
 function fun(){
 	var def = "This is a function.";
 	console.log(def);
@@ -1034,7 +1034,7 @@ return可以返回任意类型的值
 
 - 实参是对象
 
-```
+```javascript
 var obj = {
 	name:"Jeffery";
 	gender:"male";
@@ -1052,7 +1052,7 @@ fun(obj);
 
 - 实参是函数
 
-```
+```javascript
 function fun1(a,b){
 	return a + b;
 }
@@ -1068,7 +1068,7 @@ fun2(fun1);
 
 - 实参是函数的返回值
 
-```
+```javascript
 function fun1(a,b){
 	return a + b;
 }
@@ -1103,7 +1103,7 @@ fun2(fun1(20,30));
 
 > 函数作为一个对象的属性称为该对象的方法，调用函数称为调用该对象的方法
 
-```
+```javascript
 var obj = new Object();
 obj.name = "Jeffery";
 obj.age1 = 12;
@@ -1116,7 +1116,7 @@ obj.ageAdd();//调用函数
 
 - 枚举对象中的属性（使用for...in语句枚举对象中的属性）
 
-```
+```javascript
 //使用for...in语句枚举对象中的属性
 //每次执行会将对象中的一个属性赋值给变量n
 var obj = {
@@ -1132,7 +1132,7 @@ for(var n in obj){
 
 ### 58 作用域
 
-作用域值一个变量作用的范围
+作用域指一个变量作用的范围
 
 JS中的作用域分为两种：全局作用域和局部（函数）作用域
 
@@ -1140,7 +1140,7 @@ JS中的作用域分为两种：全局作用域和局部（函数）作用域
 
 > 直接编写在script标签中的JS代码，都在全局作用域
 >
-> 函数中不使用var创建者声明的变量也会成为全局变量
+> 函数中不使用var创建声明的变量也会成为全局变量
 >
 > 全局作用域在页面打开时创建，在页面关闭时销毁
 >
@@ -1209,7 +1209,7 @@ console.log("b = "+b);
 
 - 就近原则，谁近找谁
 
-```
+```javascript
 var a = "全局作用域下的变量a";
 function fun(){
 	var a = "函数作用域下的变量a";
@@ -1288,7 +1288,7 @@ fun();	// 函数调用的方式this的类型是window
 
 
 
-```
+```javascript
 function fun(){
 	console.log(this);
 }
@@ -1313,7 +1313,7 @@ function fun(){
 // 创建两个对象
 var obj1 = {
 	name:"Jacky",
-	sayName:fun,
+	sayName:fun
 };
 var obj2 = {
 	name:"Jay",
@@ -2035,4 +2035,156 @@ console.log(result);
 /\./;
 /\\/;
 ```
+
+## DOM（文档对象模型）
+
+通过DOM可以去操作网页，把网页的每一个部分都转换为对象，然后用纯粹面向对象的方法去操作HTML文档中的任意部分，对象多了就不好管理，所以采用模型去管理，这样就很清晰了
+
+DOM就是做两件事：找到对象；操作对象
+
+- 事件：用户和浏览器的交互行为
+- 处理事件：我们可以在事件的对应属性中设置一些JS代码，这样事件被触发时，这些代码会被执行
+  - 这种写法称为结构和行为耦合，不方便维护，不推荐使用
+
+- 处理事件：绑定一个事件，像这种为单机事件绑定的函数，我们称为响应函数
+
+```javascript
+<button id="bt">Hello</button>
+    <script type="text/javascript">
+        // 获取对象
+        var bt = document.getElementById("bt");
+        // console.log(bt);
+        // 可以为按钮的对应事件绑定处理函数的形式来响应事件
+        // 绑定一个单击事件
+        bt.onclick = function(){
+            alert("OK");
+        }
+
+    </script>
+```
+
+- onload事件会在整个页面加载完毕后才触发，如果你要把代码写在最上面时用这种方法
+
+```javascript
+// 为window绑定一个onload事件
+window.onload = function(){
+	var btn = document.getElementById("btn");
+}
+```
+
+### 94 DOM查询
+
+之前讲的是通过id属性去获取
+
+获取元素节点
+
+#### 通过document对象调用
+
+- getElementById()
+  - 通过id属性获取一个元素节点对象
+
+- getElementsByTagName()
+  - 通过标签名获取一组元素节点对象
+- getElementsByName()
+  - 通过name属性获取一组元素节点对象
+  - 注意class的特殊情况
+
+```javascript
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>DOM查询</title>
+    <link href='style.css' rel='stylesheet' type='text/css'>
+    <script>
+        window.onload = function () {
+            // 为id名为btn1的按钮绑定单击响应函数
+            var btn1 = document.getElementById("btn1");
+            btn1.onclick = function () {
+                // 查找#bj节点
+                var bj = document.getElementById("bj");
+                alert(bj.innerHTML);
+            }
+
+            // 为id名为btn2的按钮绑定单击响应函数
+            var btn2 = document.getElementById("btn2");
+            btn2.onclick = function () {
+                // 查找#sh节点
+                var sh = document.getElementById("sh");
+                alert(sh.innerHTML);
+            }
+
+            // 为id名为#btn3的按钮绑定单击响应函数
+            var btn3 = document.getElementById("btn3");
+            btn3.onclick = function () {
+                // 查找#dj节点
+                var dj = document.getElementById("dj");
+                alert(dj.innerHTML);
+            }
+
+            // 为id名为btn4的按钮绑定单击响应函数
+            var btn4 = document.getElementById("btn4");
+            btn4.onclick = function () {
+                // 查找#se节点
+                var se = document.getElementById("se");
+                alert(se.innerHTML);
+            }
+
+            // 为id名为btn5的按钮绑定响应函数
+            var btn5 = document.getElementById("btn5");
+            btn5.onclick = function () {
+                // 查找所有li标签的节点
+                var lis = document.getElementsByTagName("li");
+                alert(lis.length);
+                for (var i = 0; i < lis.length; i++) {
+                    alert(lis[i].innerHTML);
+                }
+
+            }
+
+            // 为id名为btn6的按钮绑定响应函数
+            var btn6 = document.getElementById("btn6")
+            btn6.onclick = function(){
+                // 查找所有属性名为city的节点
+                var inputs = document.getElementsByName("city");
+                alert(inputs.length);
+                for(var i = 0;i < inputs.length;i++){
+                    alert(inputs[i].innerHTML);
+                }
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div class="button">
+        <p>按钮</p>
+        <ul>
+            <li><button id="btn1">查找#bj节点</button></li>
+            <li><button id="btn2">查找#sh节点</button></li>
+            <li><button id="btn3">查找#dj节点</button></li>
+            <li><button id="btn4">查找#se节点</button></li>
+            <li><button id="btn5">查找所有li节点</button></li>
+            <li><button id="btn6">查找name为city节点</button></li>
+        </ul>
+    </div>
+
+    <div class="city">
+        <p>你喜欢哪个城市</p>
+        <input type="search" name="city" value="write down">
+        <ul>
+            <li id="bj">北京</li>
+            <li id="sh">上海</li>
+            <li id="dj">东京</li>
+            <li id="se">首尔</li>
+        </ul>
+    </div>
+
+</body>
+
+</html>
+```
+
+- 图片切换练习
 

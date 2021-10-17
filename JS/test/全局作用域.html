@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>全局作用域</title>
+    <!-- <link href='style.css' rel='stylesheet' type='text/css'> -->
+    <script>
+        // 在全局作用域创建一个变量
+        var a = 10;
+        // 在全局作用域创建一个函数
+        function fun(){
+            alert("hello");
+        }
+        fun();
+        // 在全局作用域创建变量和函数作为window对象的属性和方法
+        console.log(window);
+        console.log(window.a);
+        console.log(window.fun);
+
+        // 函数作用域
+        var b = "全局作用域下的b";
+        function funb(){
+            b = "函数作用域下的b";
+            alert(window.b);
+        }
+        funb();
+        
+    </script>
+</head>
+
+<body>
+    
+</body>
+
+</html>

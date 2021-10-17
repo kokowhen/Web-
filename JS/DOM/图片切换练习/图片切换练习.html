@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>图片切换练习</title>
+    <link href='style.css' rel='stylesheet' type='text/css'>
+    <script>
+        window.onload = function () {
+            // 获取两个翻页按钮的对象
+            var prev = document.getElementById("prev");
+            var next = document.getElementById("next");
+
+            // 获取img标签对象，注意这里获取到的对象会存在数组里，使用的使用要按照数组对象的方法去使用
+            var img = document.getElementsByTagName("img")[0];
+
+            // 将所有图片都存入数组里
+            var imgArr = ["1.jpg", "2.jpg", "3.jpg"];
+
+            // 创建图片数组索引变量
+            var index = 0;
+
+            // 为图片添加信息
+            var info = document.getElementById("info");
+            info.innerHTML = "一共有" + imgArr.length + "张图片，现在是第" + (index + 1) + "张";
+
+            // 为两个翻页按钮绑定单击响应函数
+            prev.onclick = function () {
+                index--;
+                if (index < 0) {
+                    index = imgArr.length - 1;
+                }
+                info.innerHTML = "一共有" + imgArr.length + "张图片，现在是第" + (index + 1) + "张";
+                img.src = imgArr[index];
+            }
+
+            next.onclick = function () {
+                index++;
+                if (index > imgArr.length - 1) {
+                    index = 0;
+                }
+                info.innerHTML = "一共有" + imgArr.length + "张图片，现在是第" + (index + 1) + "张";
+                img.src = imgArr[index];
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div id="pic">
+        <p id="info"></p>
+        <img src="1.jpg" alt="picture">
+        <button id="prev">上一张图片</button>
+        <button id="next">下一张图片</button>
+    </div>
+</body>
+
+</html>
