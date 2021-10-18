@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>获取元素子节点</title>
+    <!-- <link href='style.css' rel='stylesheet' type='text/css'> -->
+    <script>
+        window,onload = function(){
+        // 获取id为btn1的对象
+        var btn1 = document.getElementById("btn1");
+        // 为btn1按钮绑定响应函数
+        btn1.onclick = function(){
+            // 获取id为city的节点
+            var city = document.getElementById("city");
+            var lis = city.getElementsByTagName("li");
+            alert(lis[0].innerHTML);
+        }
+    }
+    </script>
+</head>
+
+<body>
+    <div>
+        <ul>
+            <li id="btn1"><button>获取id为city的元素的所有子节点</button></li>
+        </ul>
+    </div>
+    <div>
+        <ul id="city">
+            <li id="bj"><button>北京</button></li>
+            <li id="sh"><button>上海</button></li>
+            <li id="dj"><button>东京</button></li>
+            <li id="se"><button>首尔</button></li>
+        </ul>
+    </div>
+    
+</body>
+
+</html>

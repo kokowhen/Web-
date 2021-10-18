@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title></title>
+    <!-- <link href='style.css' rel='stylesheet' type='text/css'> -->
+    <script>
+        window.onload = function () {
+            var btn1 = document.getElementById("btn1");
+            btn1.onclick = function () {
+                var bj = document.getElementById("bj");
+                alert(bj.innerHTML);
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div class="button">
+        <p>按钮</p>
+        <ul>
+            <li><button id="btn1">查找#bj节点</button></li>
+            <li><button id="btn2">查找#sh节点</button></li>
+            <li><button id="btn3">查找#dj节点</button></li>
+            <li><button id="btn4">查找#se节点</button></li>
+            <li><button id="btn5">查找所有li节点</button></li>
+            <li><button id="btn6">查找name为city节点</button></li>
+        </ul>
+    </div>
+
+    <div class="city">
+        <p>你喜欢哪个城市</p>
+        <input type="search" name="city" value="write down">
+        <ul>
+            <li id="bj">北京</li>
+            <li id="sh">上海</li>
+            <li id="dj">东京</li>
+            <li id="se">首尔</li>
+        </ul>
+    </div>
+</body>
+
+</html>

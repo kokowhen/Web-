@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>获取元素父节点</title>
+    <!-- <link href='style.css' rel='stylesheet' type='text/css'> -->
+    <script>
+        window.onload = function () {
+            // 把绑定响应单击对象的操作封装起来
+            function myClick(idStr, fun) {
+                // 获取btn1按钮的对象的操作
+                var btn = document.getElementById(idStr);
+                // 为btn绑定单击响应函数
+                btn.onclick = fun;
+            }
+            myClick("btn1", function () {
+                var bj = document.getElementById("bj");
+                var pn = bj.parentNode;
+                alert(pn.innerText);
+            });
+        }
+    </script>
+</head>
+
+<body>
+    <div>
+        <ul>
+            <li id="btn1"><button>获取id为bj的li子元素的父元素节点</button></li>
+        </ul>
+    </div>
+    <div>
+        <ul>
+            <li id="bj">北京</li>
+            <li id="sh">上海</li>
+            <li id="dj">东京</li>
+            <li id="se">首尔</li>
+        </ul>
+    </div>
+
+</body>
+
+</html>

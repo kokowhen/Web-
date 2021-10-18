@@ -1,0 +1,24 @@
+/* 初始化所有样式 */
+ *{
+     padding: 0;
+     margin: 0;
+ }
+
+ /* 设置id为pic的样式 */
+ #pic{
+     width: 800px;
+     padding: 20px;
+     margin: 20px;
+     border: 20px solid black;
+     background-color: blueviolet;
+     text-align: center;
+ }
+
+ #prev{
+     background-color: brown;
+ }
+
+ #next{
+     background-color: burlywood;
+ }
+ 
