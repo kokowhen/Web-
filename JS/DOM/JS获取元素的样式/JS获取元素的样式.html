@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title></title>
+    <link href='style.css' rel='stylesheet' type='text/css'>
+    <script>
+        window.onload = function(){
+            var btn01 = document.getElementById("btn01");
+            btn01.onclick = function(){
+                // 怎样获取当前元素正在显示的元素
+                // alert("hello");
+                // alert(box1.currentStyle.width);
+                var obj = getComputedStyle(box1,null);  // 返回了一个对象
+                // alert(obj);
+                alert(obj.width);
+                alert(obj.backgroundColor);
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <button id="btn01">点我一下</button>
+    <br><br>
+    <div id="box1" style="width: auto;background-color: yellow;">
+
+    </div>
+    
+</body>
+
+</html>

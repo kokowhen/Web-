@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>其他样式相关属性</title>
+    <link href='style.css' rel='stylesheet' type='text/css'>
+    <script>
+        window.onload = function(){
+            var btn01 = document.getElementById("btn01");
+            var box1 = document.getElementById("box1");
+            btn01.onclick = function(){
+                // clientWidth和clientHeight
+                // 获取元素现在显示的宽度和高度，包括内容区域和内边距的大小，不包括边框，不带px像素单位，返回的是数字
+                // alert(box1.clientWidth);
+                // alert(box1.clientHeight);
+                // box1.clientWidth = "500";    // 没用，这些属性是只读的
+                // offsetHeight和offsetWidth返回的值包括边框
+                // alert(box1.offsetHeight);
+                // alert(box1.offsetWidth);
+                // alert(box1.offsetParent);
+                // var op = box1.offsetParent; // 获取离其最近的开启position的父级元素
+                // alert(op.id);
+                // 相对于其开启position定位父元素的距离
+                // alert(box1.offsetLeft);
+                // alert(box1.offsetTop);
+                var box4 = document.getElementById("box4");
+                // alert(box4.clientHeight);
+                // alert(box4.scrollHeight);   // 获取滚动区域的高度
+                // alert(box4.scrollWidth);    // 获取元素整个滚动区域的宽度
+                alert(box4.scrollLeft); //  水平滚动条的距离
+                alert(box4.scrollTop);  // 垂直滚动条的距离
+                
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <button id="btn01">点我一下</button>
+    <br><br>
+    <div id="box3" style="position: relative;">
+        <div id="box2" style="position: relative;">
+            <div id="box1"></div>
+        </div>
+    </div>
+
+    <div id="box4">
+        <div id="box5">
+
+        </div>
+    </div>
+    
+</body>
+
+</html>

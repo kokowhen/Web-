@@ -77,13 +77,7 @@
                 tbody.appendChild(tr);
                 // 为新添加的a再次绑定单击响应函数
                 a.onclick = function () {
-                    // alert("hello");
-                    // 单击超链接后删除超链接所在的那一行
-                    // alert(this);
-                    // 获取当前tr
                     var tr = this.parentNode.parentNode;
-                    // 删除之前弹出警示信息
-                    // 获取要删除的员工的名字
                     var name = tr.getElementsByTagName("td")[0].innerHTML;
                     var flag = confirm("确认删除" + name + "吗？");
                     if (flag) {

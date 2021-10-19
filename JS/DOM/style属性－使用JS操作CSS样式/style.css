@@ -1,0 +1,7 @@
+#box1{
+    width: 200px;
+    height: 200px;
+    /* background-color: red !important;   最高优先级，JS也不能设置 */
+    background-color: red;
+    margin: 20px;
+}

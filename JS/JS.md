@@ -2329,7 +2329,358 @@ window.onload = function(){
 
 - 添加删除记录练习
 
+```javascript
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>员工信息删除添加练习</title>
+    <meta charset='UTF-8'>
+    <link href='style.css' rel='stylesheet' type='text/css'>
+    <script>
+        window.onload = function () {
+            //* 获取删除超链接对象
+            // 通过a标签获取所有超链接对象，存放在类数组中
+            var allA = document.getElementsByTagName("a");
+            // 为每个超链接绑定单击响应函数
+            for (var i = 0; i < allA.length; i++) {
+                allA[i].onclick = function () {
+                    // alert("hello");
+                    // 点一下delete会先弹出提示信息，再删除
+                    // 提示信息
+                    var tr = this.parentNode.parentNode;
+                    var Name = tr.getElementsByTagName("td")[0].innerHTML;
+                    var flag = confirm("真的要删除"+Name+"吗？");
+                    if (flag) {
+                        // 删除员工信息，就是删除tr节点下的所有信息
+                        // 获取tr对象
+                        //  - 方法1，为什么不行？和this不同，i这里不是正确的索引值
+                        // for循环会在页面加载之前立即执行，而响应函数会在超链接点击时被执行，当响应函数执行时，for循环早已执行完毕，已经是边界值
+                        // var tr = allA[i].parentNode.parentNode;
+                        //  - 方法2
+                        // var tr = this.parentNode.parentNode;
+                        // 删除
+                        //  - 方法1
+                        // 先获取tr的父节点再删除
+                        // var trPar = tr.parentNode;
+                        // trPar.removeChild(tr);
+                        //  - 方法2
+                        // 直接获取tr的父节点和删除
+                        tr.parentNode.removeChild(tr);
+
+                    }
+                    return false;
+                }
+            }
+            // 获取提交按钮对象
+            var submit = document.getElementById("submit");
+            // 为按钮绑定单击响应函数
+            submit.onclick = function () {
+                // alert("hello");
+                // 获取员工的信息
+                var name = document.getElementById("name").value;
+                // alert(name);
+                var id = document.getElementById("id").value;
+                var email = document.getElementById("email").value;
+                var salary = document.getElementById("salary").value;
+                // 创建一个最外层的tr节点
+                var tr = document.createElement("tr");
+                // 创建5个td节点
+                var NameTd = document.createElement("td");
+                var idTd = document.createElement("td");
+                var emailTd = document.createElement("td");
+                var salaryTd = document.createElement("td");
+                var aTd = document.createElement("a");
+                // 创建a标签节点
+                var a = document.createElement("a");
+                // 创建文本节点
+                var nameText = document.createTextNode(name);
+                var idText = document.createTextNode(id);
+                var emailText = document.createTextNode(email);
+                var salaryText = document.createTextNode(salary);
+                var delText = document.createTextNode("Delete");
+                // 把散的节点连起来
+                // text和td联系
+                // 员工的name
+                NameTd.appendChild(nameText);
+                // 员工的id
+                idTd.appendChild(idText);
+                // 员工的email
+                emailTd.appendChild(emailText);
+                // 员工的salary
+                salaryTd.appendChild(salaryText);
+                // delete超链接
+                a.appendChild(delText);
+                aTd.appendChild(a);
+                // 向a中添加href属性
+                a.href = "java:;";
+                // td和tr联系
+                tr.appendChild(NameTd);
+                tr.appendChild(idTd);
+                tr.appendChild(emailTd);
+                tr.appendChild(salaryTd);
+                tr.appendChild(aTd);
+                // 获取table
+                var employeeTable = document.getElementById("employeeTable");
+                // 获取tbody
+                var tbody = employeeTable.getElementsByTagName("tbody")[0];
+                // 将tr添加到table中的tbody里
+                tbody.appendChild(tr);
+                // 删除员工信息
+                // 为新添加的a再次绑定单击响应函数
+                a.onclick = function(){
+                    // 弹出提示信息
+                    var name
+                    var flag = confirm("确定删除吗");
+                    if(flag){
+                        var tr = this.parentNode.parentNode;
+                        tr.parentNode.removeChild(tr);
+                    }
+                    return false;
+                }
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div class="tableDiv">
+        <h4>员工信息表</h4>
+        <table id="employeeTable">
+            <tr>
+                <th>Name</th>
+                <th>Id</th>
+                <th>Email</th>
+                <th>Salary</th>
+                <th></th>
+            </tr>
+            <tr>
+                <td>Tom</td>
+                <td>001</td>
+                <td>Tom@163.com</td>
+                <td>5000</td>
+                <td><a href="#">Delete</a></td>
+            </tr>
+            <tr>
+                <td>Bob</td>
+                <td>002</td>
+                <td>Bob@163.com</td>
+                <td>7000</td>
+                <td><a href="#">Delete</a></td>
+            </tr>
+            <tr>
+                <td>Jerry</td>
+                <td>003</td>
+                <td>Jerry@163.com</td>
+                <td>8000</td>
+                <td><a href="#">Delete</a></td>
+            </tr>
+        </table>
+    </div>
+    <div class="addIofo">
+        <h4>添加员工信息</h4>
+        <table>
+            <tr>name: <input type="text" id="name"></tr><br>
+            <tr>id: <input type="number" id="id"></tr><br>
+            <tr>email: <input type="email" id="email"></tr><br>
+            <tr>salary: <input type="text" id="salary"></tr><br>
+            <tr><button id="submit">Submit</button></tr>
+        </table>
+    </div>
+</body>
+
+</html>
 ```
 
+### 107 使用JS操作CSS
+
+- style属性，设置内联样式
+
+```javascript
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>使用JS操作CSS样式</title>
+    <link href='style.css' rel='stylesheet' type='text/css'>
+    <script>
+        window.onload = function () {
+            // 点击按钮以后修改box1的大小
+            var btn01 = document.getElementById("btn01");
+            btn01.onclick = function () {
+                // alert("hello");
+                // 通过JS修改box1的宽度
+                // 通过style设置的样式都是内联样式，优先级较高
+                box1.style.width = "300px";
+                box1.style.height = "300px";
+                box1.style.backgroundColor = "yellow";
+                box1.style.boderTopWidth = "2px";
+
+                // 点击按钮2以后读取元素的样式
+                // 通过style属性读取和设置的都是内联样式
+                var btn02 = document.getElementById("btn02");
+                btn02.onclick = function(){
+                    alert(box1.style.width);
+                    alert(box1.style.backgroundColor);
+                }
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <button id="btn01">点我一下</button>
+    <button id="btn02">点我一下</button>
+    <div id="box1">
+
+    </div>
+</body>
+
+</html>
+```
+
+- getComputedStyle( ,null)获取当前显示的CSS样式
+
+```javascript
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title></title>
+    <link href='style.css' rel='stylesheet' type='text/css'>
+    <script>
+        window.onload = function(){
+            var btn01 = document.getElementById("btn01");
+            btn01.onclick = function(){
+                // 怎样获取当前元素正在显示的元素
+                // alert("hello");
+                // alert(box1.currentStyle.width);
+                var obj = getComputedStyle(box1,null);  // 返回了一个对象
+                // alert(obj);
+                alert(obj.width);
+                alert(obj.backgroundColor);
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <button id="btn01">点我一下</button>
+    <br><br>
+    <div id="box1" style="width: auto;background-color: yellow;">
+
+    </div>
+    
+</body>
+
+</html>
+```
+
+- 其他样式相关属性
+
+```javascript
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>其他样式相关属性</title>
+    <link href='style.css' rel='stylesheet' type='text/css'>
+    <script>
+        window.onload = function(){
+            var btn01 = document.getElementById("btn01");
+            var box1 = document.getElementById("box1");
+            btn01.onclick = function(){
+                // clientWidth和clientHeight
+                // 获取元素现在显示的宽度和高度，包括内容区域和内边距的大小，不包括边框，不带px像素单位，返回的是数字
+                // alert(box1.clientWidth);
+                // alert(box1.clientHeight);
+                // box1.clientWidth = "500";    // 没用，这些属性是只读的
+                // offsetHeight和offsetWidth返回的值包括边框
+                // alert(box1.offsetHeight);
+                // alert(box1.offsetWidth);
+                // alert(box1.offsetParent);
+                // var op = box1.offsetParent; // 获取离其最近的开启position的父级元素
+                // alert(op.id);
+                // 相对于其开启position定位父元素的距离
+                // alert(box1.offsetLeft);
+                // alert(box1.offsetTop);
+                var box4 = document.getElementById("box4");
+                // alert(box4.clientHeight);
+                // alert(box4.scrollHeight);   // 获取滚动区域的高度
+                // alert(box4.scrollWidth);    // 获取元素整个滚动区域的宽度
+                alert(box4.scrollLeft); //  水平滚动条的距离
+                alert(box4.scrollTop);  // 垂直滚动条的距离
+                
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <button id="btn01">点我一下</button>
+    <br><br>
+    <div id="box3" style="position: relative;">
+        <div id="box2" style="position: relative;">
+            <div id="box1"></div>
+        </div>
+    </div>
+
+    <div id="box4">
+        <div id="box5">
+
+        </div>
+    </div>
+    
+</body>
+
+</html>
+```
+
+
+
+```javascript
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title></title>
+    <link href='style.css' rel='stylesheet' type='text/css'>
+    <script>
+        window.onload = function(){
+            // 当垂直滚动条滚动到底部的时候触发
+            var info = document.getElementById("info");
+            // 获取两个表单项
+            var inputs = document.getElementsByTagName("input");
+            // 为info绑定滚动条滚动响应函数
+            info.onscroll = function(){
+                // alert("angry");
+                // 检查滚动条是否到底
+                if(info.scrollHeight - info.scrollTop == info.clientHeight){
+                    // alert("over");
+                    // 使表单项可用
+                    inputs[0].disabled = false;
+                    inputs[1].disabled = false;
+                }
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <h3>欢迎亲爱的用户注册</h3>
+    <P id="info">
+        亲爱的用户，请仔细阅读以下协议，如果你不仔细阅读就不要注册了！
+        亲爱的用户，请仔细阅读以下协议，如果你不仔细阅读就不要注册了！
+    </P>
+    <input type="checkbox" disabled="disabled">我已仔细阅读协议，一定遵守
+    <input type="submit" value="注册" disabled="disabled">
+    
+</body>
+
+</html>
 ```
 

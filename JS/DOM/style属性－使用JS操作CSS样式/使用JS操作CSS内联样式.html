@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>使用JS操作CSS内联样式</title>
+    <link href='style.css' rel='stylesheet' type='text/css'>
+    <script>
+        window.onload = function () {
+            // 点击按钮以后修改box1的大小
+            var btn01 = document.getElementById("btn01");
+            btn01.onclick = function () {
+                // alert("hello");
+                // 通过JS修改box1的宽度
+                // 通过style设置的样式都是内联样式，优先级较高
+                box1.style.width = "300px";
+                box1.style.height = "300px";
+                box1.style.backgroundColor = "yellow";
+                box1.style.boderTopWidth = "2px";
+
+                // 点击按钮2以后读取元素的样式
+                // 通过style属性读取和设置的都是内联样式
+                var btn02 = document.getElementById("btn02");
+                btn02.onclick = function(){
+                    alert(box1.style.width);
+                    alert(box1.style.backgroundColor);
+                }
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <button id="btn01">点我一下</button>
+    <button id="btn02">点我一下</button>
+    <div id="box1">
+
+    </div>
+</body>
+
+</html>
