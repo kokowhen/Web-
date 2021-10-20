@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title></title>
+    <link href='style.css' rel='stylesheet' type='text/css'>
+    <script>
+        window.onload = function () {
+            var box1 = document.getElementById("box1");
+            // 绑定鼠标移动事件
+            document.onmousemove = function (event) {
+                // 获取鼠标的坐标
+                // var left = event.clientX;
+                // var top = event.clientY;
+                var left = event.pageX;
+                var top = event.pageY;
+                // 设置div的偏移量
+                box1.style.left = left + "px";
+                box1.style.top = top + "px";
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div id="box1"></div>
+</body>
+
+</html>

@@ -2684,3 +2684,137 @@ window.onload = function(){
 </html>
 ```
 
+### 111 事件对象
+
+- 鼠标移动坐标显示
+
+```javascript
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title></title>
+    <link href='style.css' rel='stylesheet' type='text/css'>
+    <script>
+        // 当鼠标在box1中悬浮移动时显示鼠标的坐标
+        window.onload = function () {
+            var box1 = document.getElementById("box1");
+            var box2 = document.getElementById("box2");
+            box1.onmousemove = function (event) {
+                // alert("hello");
+                // 鼠标的坐标怎样获取？
+                // 事件对象：当事件的响应函数被触发时，浏览器每次都会将事件对象作为实参传入响应函数
+                // - 事件对象中封装了当前事件相关的一切信息，比如：鼠标的坐标 键盘哪个键被按下 鼠标滚轮滚动的方向
+                // alert(event);
+                var x = event.clientX;
+                var y = event.clientY;
+                box2.innerHTML = "x = " + x + " , y = " + y;
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div id="box1"></div>
+    <br><br>
+    <div id="box2"></div>
+</body>
+
+</html>
+```
+
+- div盒子跟随鼠标移动，注意开启css样式中的position的属性值为absolute
+
+```javascript
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title></title>
+    <link href='style.css' rel='stylesheet' type='text/css'>
+    <script>
+        window.onload = function () {
+            var box1 = document.getElementById("box1");
+            // 绑定鼠标移动事件
+            document.onmousemove = function (event) {
+                // 获取鼠标的坐标
+                // var left = event.clientX;
+                // var top = event.clientY;
+                var left = event.pageX;
+                var top = event.pageY;
+                // 设置div的偏移量
+                box1.style.left = left + "px";
+                box1.style.top = top + "px";
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div id="box1"></div>
+</body>
+
+</html>
+```
+
+- 事件的冒泡，事件 的冒泡大多数是有意义的，不用取消
+
+```javascript
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title></title>
+    <link href='style.css' rel='stylesheet' type='text/css'>
+    <script>
+        // 事件的冒泡：
+        // - 所谓的冒泡指的是事件向上传导，当后代元素上的事件被触发时，其祖先元素的相同事件会被触发
+        // 单击box1会触发box1和body的单击响应函数
+        // 单击span依次触发span、box1和body的单击响应函数
+        // 在开发中冒泡大多数是有用的
+        // 如果不希望发生冒泡，可以通过事件取消冒泡
+        window.onload = function () {
+            var box1 = document.getElementById("box1");
+            box1.onclick = function (event) {
+                // event.cancelBubble = true;
+                alert("hello div")
+            }
+            var s1 = document.getElementById("s1");
+            s1.onclick = function (event) {
+                // event.cancelBubble = true;
+                alert("hello span")
+            }
+            document.body.onclick = function () {
+                alert("hello body");
+            }
+
+            var box2 = document.getElementById("box2");
+            box2.onmousemove = function(event){
+                // var left = event.clientX;
+                // var top = event.clientY;
+                var left = event.pageX;
+                var top = event.pageY;
+                box2.style.left = left + "px";
+                box2.style.top = top + "px";
+                event.cancelBubble = true;
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div id="box1">
+        我是box1
+        <span id="s1">我是sapn</span>
+    </div>
+    <div id="box2">
+
+    </div>
+</body>
+
+</html>
+```
+

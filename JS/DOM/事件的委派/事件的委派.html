@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title></title>
+    <link href='style.css' rel='stylesheet' type='text/css'>
+    <script>
+        window.onload = function () {
+            // 为每一个超链接都绑定单击响应函数
+            // 为所有a元素的共同的父元素绑定单击响应函数
+            // 这就是事件的委派，利用了事件的冒泡，会提高程序的性能，减少添加响应函数的次数，但是绑定的区域会增大，所以需要判断事件触发的有效性
+            var allA = document.getElementsByTagName("a");
+            var btn1 = document.getElementById("btn1");
+            var u1 = document.getElementById("u1");
+            btn1.onclick = function () {
+                // alert("a");
+                var li = document.createElement("li");
+                li.innerHTML = "<a href='#'>新加的超链接</a>";
+                u1.appendChild(li);
+            }
+            // for(var i = 0;i < allA.length;i++){
+            //     allA[i].onclick = function(){
+            //         // alert("hello");
+            //     }
+            // }
+            u1.onclick = function (event) {
+                if (event.target.className == "link") {
+                    alert("hello");
+                }
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <button id="btn1">添加超链接</button>
+    <ul id="u1">
+        <li><a href="#" class="link">超链接1</a></li>
+        <li><a href="#" class="link">超链接2</a></li>
+        <li><a href="#" class="link">超链接3</a></li>
+    </ul>
+</body>
+
+</html>

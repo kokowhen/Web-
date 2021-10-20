@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title></title>
+    <link href='style.css' rel='stylesheet' type='text/css'>
+    <script>
+        // 当鼠标在box1中悬浮移动时显示鼠标的坐标
+        window.onload = function () {
+            var box1 = document.getElementById("box1");
+            var box2 = document.getElementById("box2");
+            box1.onmousemove = function (event) {
+                // alert("hello");
+                // 鼠标的坐标怎样获取？
+                // 事件对象：当事件的响应函数被触发时，浏览器每次都会将事件对象作为实参传入响应函数
+                // - 事件对象中封装了当前事件相关的一切信息，比如：鼠标的坐标 键盘哪个键被按下 鼠标滚轮滚动的方向
+                // alert(event);
+                var x = event.clientX;
+                var y = event.clientY;
+                box2.innerHTML = "x = " + x + " , y = " + y;
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div id="box1"></div>
+    <br><br>
+    <div id="box2"></div>
+</body>
+
+</html>
