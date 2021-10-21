@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <meta charset='UTF-8'>
+    <link href='style.css' rel='stylesheet' type='text/css'>
+    <script>
+        window.onload = function () {
+            var box1 = document.getElementById("box1");
+            var box2 = document.getElementById("box2");
+            box1.onmousemove = function(event){
+                // alert("hello");
+                var x = event.clientX;
+                var y = event.clientY;
+                var x1 = event.pageX;
+                var y1 = event.pageY;
+                // box2.innerHTML = "x = "+x+" y = "+y;
+                box2.innerHTML = "x = "+x1+" y = "+y1;
+            }
+            
+        }
+    </script>
+</head>
+
+<body>
+    <div id="box1">
+
+    </div>
+    <div id="box2">
+
+    </div>
+</body>
+
+</html>

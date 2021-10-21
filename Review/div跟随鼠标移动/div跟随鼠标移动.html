@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <meta charset='UTF-8'>
+    <link href='style.css' rel='stylesheet' type='text/css'>
+    <script>
+        window.onload = function(){
+            var box1 = document.getElementById("box1");
+            document.onmousemove = function(event){
+                // var left = event.clientX;
+                // var top = event.clientY;
+                var left = event.pageX;
+                var top = event.pageY;
+                box1.style.left = left + "px";
+                box1.style.top = top + "px";
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div id="box1">
+
+    </div>
+</body>
+
+</html>
