@@ -12,7 +12,7 @@ fun();
 console.log(a);	// 可以访问到，调用一次函数就会生成一次全局变量a，但是不推荐这种方法去参加全局变量
 ```
 
-- var声明提升：使用var关键字声明的变量会被自动提升到函数作用域顶部
+- var声明提升：**使用var关键字声明的变量会被自动提升到函数作用域顶部**
 
 ```javascript
 function fun(){
@@ -29,7 +29,7 @@ function fun(){
 fun();	// 不会报错，输出的是undefined
 ```
 
-- let关键字声明变量和var关键字声明变量的区别
+- **let关键字声明变量和var关键字声明变量的区别**
   - let是在块级作用域声明变量
   - let声明的变量不会成为window对象的属性
 
@@ -74,7 +74,7 @@ var c = "12345bhh";	// 返回12345
 #### 3.4.6 String数据类型
 
 - 字符转换的方法：toString( )、String( )
-  - toString( )：不接收参数，null和undefined没有toString( )方法
+  - toString( )：一般不接收参数，null和undefined没有toString( )方法，可以通过传入参数设置返回字符串是多少进制
 
 ```javascript
 var a = 11;
@@ -83,12 +83,12 @@ var c = undefined;	// 报错
 var d = true;
 ```
 
-- String( )方法：传入参数
+- String( )方法：传入参数返回判断，如果事先无法预判是否为null或者undefined，那么就可以用这个方法
 
 ```javascript
 var a = 11;
-var b = null;	// 返回null
-var c = undefined;	// 报错undefined
+var b = null;	// 返回字面量null
+var c = undefined;	// 返回字面量undefined
 var d = true;
 ```
 
