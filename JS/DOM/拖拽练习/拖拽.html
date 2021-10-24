@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>拖拽练习</title>
+    <link href='style.css' rel='stylesheet' type='text/css'>
+    <script>
+        // 完成拖拽box1盒子的功能
+        // 当鼠标在被拖拽元素按下时，div开始被拖拽
+        // 鼠标移动时div跟随鼠标移动
+        // 当鼠标松开时，被拖拽在当前位置
+        window.onload = function () {
+            let box1 = document.getElementById("box1");
+            // 求出鼠标的偏移量
+            box1.onmousedown = function (event) {
+                // alert("a");
+                let ol = event.clientX - box1.offsetLeft;
+                let ot = event.clientY - box1.offsetTop;
+                document.onmousemove = function (event) {
+                    // alert("a");
+                    // 减掉鼠标的偏移量 
+                    let x = event.pageX - ol;
+                    let y = event.pageY - ot;
+                    box1.style.left = x + "px";
+                    box1.style.top = y + "px";
+                }
+                document.onmouseup = function () {
+                    // 取消onmuosemove事件
+                    document.onmousemove = null;
+                    document.onmouseup = null;
+                }
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div id="box1">
+
+    </div>
+    <div id="box2">
+
+    </div>
+</body>
+
+</html>

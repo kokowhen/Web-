@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title></title>
+    <link href='style.css' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+    <script>
+        let genericSymbol = Symbol();
+        let otherGenericSymbol = Symbol();
+        console.log(typeof genericSymbol);
+        console.log(typeof otherGenericSymbol);
+
+        let fooSymbol = Symbol('foo');
+        let otherFooSymbol = Symbol('foo');
+        console.log(fooSymbol);
+        console.log(otherFooSymbol);
+
+        console.log(genericSymbol == otherGenericSymbol);
+        console.log(fooSymbol == otherFooSymbol);
+
+        function fun() {
+            console.log("a");
+        }
+        fun();
+        console.log(fun());
+
+        // 原始变量和引用变量的区别
+        let name1 = "Jeff";
+        let name2 = new String();
+        name1.age = 24;
+        name2.age = 25;
+        console.log(name1.age);
+        console.log(name2.age);
+    </script>
+</body>
+
+</html>
