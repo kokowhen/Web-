@@ -1,0 +1,25 @@
+ul{
+    list-style-type: none;
+    padding: 0px;
+    margin: 0px;
+    background-color: white;
+}
+
+li a{
+    text-decoration: none;
+    display: block;
+    background-color: rgb(196, 189, 189);
+    width: 100px;
+    color: black;
+    padding: 8px 10px;
+}
+
+li a:hover{
+    background-color: rgb(144, 235, 144);
+    width: 100px;
+    color: white;
+}
+
+li a.active1{
+    background-color: gold;
+}

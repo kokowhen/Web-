@@ -1,0 +1,20 @@
+ul{
+    list-style-type: none;
+}
+
+li{
+    display: inline;
+}
+
+li a{
+    /* display: block; */
+    background-color: grey;
+    text-decoration: none;
+    color: black;
+    width: auto;
+}
+
+li a:hover{
+    background-color: blueviolet;
+    color: white;
+}
