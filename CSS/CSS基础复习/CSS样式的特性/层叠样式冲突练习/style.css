@@ -1,0 +1,27 @@
+/* span{
+    color: red;
+}
+
+.nav{
+    color: blue;
+}
+
+.nav ul li{
+    color: blueviolet;
+} */
+
+#box1 #box2 p{
+    color: red;
+}
+
+/* #box1 #box2 #box3 p{
+    color: blueviolet;
+}
+
+#box1 .spec2 .spec3 p{
+    color: green;
+} */
+
+#box1 #box3 p{
+    color: hotpink;
+}

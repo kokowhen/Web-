@@ -1,0 +1,15 @@
+div{
+    background-color: aquamarine;
+    border: 2px solid red;
+    /* padding: 5px; */
+    padding-left: 0px;
+    padding: 5px;
+    margin: 20px;
+}
+
+div p{
+    margin: 0;
+    background-color: saddlebrown;
+    padding: 5px;
+    border: 2px solid red;
+}
