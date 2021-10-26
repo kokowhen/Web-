@@ -1,0 +1,14 @@
+/* 通过浮动和取消浮动设置两行 */
+
+div{
+    width: 400px;
+    height: 20px;
+    background-color: palevioletred;
+}
+
+li{
+    float: left;
+    width:80px;
+    list-style-type: none;
+    text-align: center;
+}

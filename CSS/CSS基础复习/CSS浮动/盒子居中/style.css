@@ -1,0 +1,15 @@
+.box1{
+    width: 100px;
+    height: 100px;
+    background-color: palevioletred;
+    margin: 0 auto;
+    /* float: left; */
+}
+
+.box2{
+    width: 100px;
+    height: 100px;
+    background-color: purple;
+    margin: 0 auto;
+    /* float: left; */
+}
