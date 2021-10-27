@@ -1,0 +1,110 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
+
+body{
+    font-size: 14px;
+    font-family: "Microsoft YaHei","SimSun";
+    height: 8888px;
+}
+/* header盒子设置高度和背景颜色 */
+.header{
+    height: 58px;
+    background-color: #191D3A;
+}
+/* 版心设置宽度和相对父元素居中 */
+.inner_c{
+    width: 1000px;
+    margin: 0 auto;
+}
+/* logo盒子设置浮动脱标和外边距 */
+.header .logo{
+    float: left;
+    padding-left: 12px;
+    margin-right: 39px;
+    width: 174px;
+    height: 58px;
+}
+.header .logo a{
+    display: block;
+    width: 174px;
+    height: 58px;
+    background: url(logo.png) no-repeat center;
+    text-indent: -999em;
+}
+
+/* 导航栏盒子设置浮动脱标 */
+.header .nav{
+    float: left;
+}
+/* 去除列表默认效果:列表前的圆点 */
+.header .nav ul{
+    list-style-type: none;
+}
+/* 设置导航栏每个盒子为浮动,宽度,行高,每个盒子之间设置边界线 */
+.header .nav ul li{
+    float: left;
+    width: 100px;
+    line-height: 58px;
+    border-left: 1px solid #252947;
+}
+/* 导航栏最后一个盒子也要设置边界线 */
+.header .nav ul li.last{
+    border-right: 1px solid #252947;
+}
+/* 去除超链接默认效果 */
+.header .nav ul li a{
+    display: block;
+    height: 58px;
+    text-decoration: none;
+    color: #818496;
+    text-align: center;
+}
+/* 当前页面导航栏设置 */
+.header .nav ul li a.current{
+    color: white;
+    background-color: #252947;
+}
+
+.header .nav ul li a:hover{
+    color: white;
+    background-color: #252947;
+}
+
+.header .join_us_box{
+    float: left;
+    height: 58px;
+    width: 100px;
+    padding-left: 48px;
+    padding-top: 12px;
+}
+
+.header .join_us_box .join_us{
+    height: 34px;
+    background-image: url();
+    background-repeat: no-repeat;
+    text-align: center;
+}
+
+.header .join_us_box .join_us a{
+    display: block;
+    line-height: 34px;
+    text-decoration: none;
+    color: white;
+    background-color: #38b774;
+    border-radius: 3px;
+}
+
+.header .join_us_box .join_us a:hover{
+    background-color: #38b460;
+}
+
+.cl{
+    clear: both;
+}
+
+.banner{
+    height: 460px;
+    background: url(banner20210325.jpg) no-repeat center top;
+}
