@@ -1,0 +1,20 @@
+
+.outer{
+    /* border: 10px solid red; */
+    overflow: hidden;
+}
+/* 由于没给outer设置w和h，所以outer的w和h由inner决定 */
+.inner{
+    width: 100px;
+    height: 100px;
+    background-color: #bfa;
+    /* 高度塌陷 */
+    float: left;
+}
+
+.box{
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    margin-top: 10px;
+}
