@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <meta charset='UTF-8'>
+    <!-- <link href='style.css' rel='stylesheet' type='text/css'> -->
+    <script>
+        window.onload = function(){
+            var obj = new Object();
+            obj.name = "Jeffery";
+            obj.sayName = function(){
+                console.log(obj.name);
+            }
+            // 没加括号是获取方法
+            console.log(obj.sayName)
+            // 加了括号是调用方法：执行函数里的内容
+            console.log(obj.sayName());
+        }
+    </script>
+</head>
+    <script>
+        var obj1 = new Object();
+        var obj2 = new Object();
+        obj1.test = undefined;
+        obj2.info = 35;
+        obj1.test = obj2;
+        console.log(obj1.test.info);
+
+        // 基本数据类型存放在栈内存中
+        var a = 10;
+        var b = 10;
+        b = a;
+        a = 100;
+        console.log(a); // 输出100
+        console.log(b); // 输出10
+
+        // 引用数据类型存放在堆内存中
+        var o1 = new Object();
+        var o2 = new Object();
+        var o3 = o1;
+        o1.age = 23;
+        o2.age = o1.age;
+        o3.age = 18;
+        o1.age = 24;
+        console.log(o1.age);    // 输出24
+        console.log(o2.age);    // 输出23，因为o2变量和o1变量new的对象不是同一个，不在同一块堆区内存
+        console.log(o3.age);    // 输出24，并没有输出18，因为o3和o1new的对象都是同一个，保存在同一块堆区内存
+
+        // 如何把一个对象拷贝到另外一个对象而且两个对象之间互不影响？
+        var p1 = new Object();
+        p1.name = "Jay";
+        p1.age = 40;
+        // var p2 = p1;        // 这种情况会互相影响
+        var p2 = Object.assign({},p1);      // 这种情况不会互相影响
+        p2.name = "Jacky";
+        p2.age = 23;
+        p1.age = 20;
+        console.log(p1.age);    // 输出20
+        console.log(p2.age);    // 输出23
+    </script>
+<body>
+    
+</body>
+
+</html>

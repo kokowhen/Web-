@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <meta charset='UTF-8'>
+</head>
+
+<body>
+    <script>
+        // var a = 10;
+        // // 函数(普通函数、立即执行函数)调用的this
+        // var fun1 = function(){
+        //     console.log(this);  // 输出window
+        //     console.log(window);    // 输出window
+        //     console.log(window.a);  // 输出10
+        //     console.log(this.a);    // 输出全局的a的10
+        //     console.log(this.p);    // 输出全局的p函数
+        // }
+        // fun1();
+
+        // // 函数作用域的变量会变为window对象的属性吗？访问不到
+        // function p(){
+        //     var name = "Jeffery";
+        // }
+        // p();
+        // var name = "Jacky";
+        // console.log(window.name);
+
+        // 对象方法调用的this
+        var obj = {
+            Pname:"Jeffery",
+            age:24,
+            sayName:function(){
+                console.log(obj.Pname);     // 输出Jeffery
+                console.log(this.Pname);    // 输出Jeffery
+                console.log(obj.age);   // 输出24
+                console.log(this.age);  // 输出24
+                console.log(obj.sayName);   // 输出sayName函数
+                console.log(this.sayName);  // 输出sayName函数
+            }
+        }
+        obj.sayName();  // 调用方法
+    </script>
+</body>
+
+</html>

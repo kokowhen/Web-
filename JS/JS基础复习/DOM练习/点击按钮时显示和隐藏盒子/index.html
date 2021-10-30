@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <meta charset='UTF-8'>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: gold;
+            text-align: center;
+            line-height: 100px;
+        }
+        .btn{
+            margin: 10px 25px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="btn">
+        <button id="btn">隐藏</button>
+    </div>
+    <div class="box">
+        <p>advertise</p>
+    </div>
+    <script>
+        // requirement：点击隐藏文字按钮盒子消失按钮文字变为显示，再次点击按钮恢复到原来的状态
+        // 获取按钮对象
+        var btn = document.getElementById("btn");
+        // 获取盒子对象
+        var box = document.getElementsByClassName("box")[0];
+        // 为按钮绑定单击响应函数
+        btn.onclick = function(){
+            // alert("ff");
+            if(this.innerHTML == "隐藏"){       // 这里的this指向事件绑定的btn对象
+                box.style.display = "none";
+                this.innerHTML = "显示";
+            }
+            else{
+                box.style.display = "block";
+                this.innerHTML = "隐藏";
+            }
+        }
+        // console.log(btn.innerHTML);
+        // console.log(btn.innerText);
+        // console.log(typeof(btn.innerText));
+        // console.log(typeof(btn.innerHTML));
+    </script>
+</body>
+
+</html>

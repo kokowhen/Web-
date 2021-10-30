@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <meta charset='UTF-8'>
+</head>
+
+<body>
+    <script>
+        // 常用的创建对象的三种方式
+        // 1.对象字面量：效率不高，适合创建单个对象
+        // var obj1 = {
+        //     name: "Jeffery",
+        //     age: 24,
+        //     sayName: function () {
+        //         console.log(this.name)
+        //     }
+        // }
+        // // obj1.sayName();
+        // console.log(obj1);
+
+        // 2.工厂模式创建对象
+        // function createPerson(name,age){
+        //     var obj = new Object();
+        //     obj.name = name;
+        //     obj.age = age;
+        //     obj.sayName = function(){
+        //         alert(this.name);
+        //     }
+        //     return obj;
+        // }
+        // var person1 = createPerson("jeffery",24);
+        // var person2 = createPerson("Jacky",32);
+        // console.log(person1);
+        // person1.sayName();
+        // console.log(person2);
+        // person2.sayName();
+
+        // 3.构造函数创建对象
+        function Person(name,age){
+            this.name = name;       // this指向的对象就是创建的新的实例对象
+            this.age = age;
+            this.sayName = function(){
+                console.log(this.name);
+            }
+        }
+        var person1 = new Person("Jeffery",24); // 构造函数调用的时候还要在前面加new
+        var person2 = new Person("Jacky",32);
+        console.log(person1);
+        console.log(person2);
+
+    </script>
+</body>
+
+</html>

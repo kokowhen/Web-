@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <meta charset='UTF-8'>
+</head>
+
+<body>
+    <script>
+        // 1.普通函数的调用
+        // 2.调用对象的方法
+        // 3.立即执行函数，自动调用
+        (function () {
+            console.log("hello");
+        })();
+
+        // 函数返回值
+        function fun(a, b) {
+            return a + b, a;
+            alert("ff");    // return后面的语句不执行，如果没有return语句，返回的是undefined
+        }
+        var result = fun(10, 20);
+        console.log(result);    // 返回10，不是30，只会返回最后一个参数的值
+
+        // 函数调用和方法调用
+        var obj = {
+            name: "Jeffery",
+            sayName: function () {
+                alert(obj.name)
+            }
+        }
+        // sayName();   //未定义
+        console.log(obj.sayName);   // 调用方法
+        console.log(obj.sayName()); // 调用函数
+    </script>
+</body>
+
+</html>
